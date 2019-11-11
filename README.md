@@ -1,7 +1,10 @@
 # HuellaAmbiental
 **Author**: Daniel González Expósito
+
 **Date**: 13/NOV/2019
+
 **Subject**: Lenguaje y Paradigmas de Programación
+
 Práctica 6. Desarrollo Dirigido por Pruebas.
 
 ## Installation
@@ -22,7 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use rake in huella_ambiental/
 
 ## Development
 
