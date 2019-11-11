@@ -7,14 +7,14 @@ RSpec.describe HuellaAmbiental do
 
     @comidas = [@carne_vaca, @nuez]
   end
+  
+  it "has a version number" do
+    expect(HuellaAmbiental::VERSION).not_to be nil
+  end
 
   context "Existencia de la clase alimento y sus metodos / atributos" do
-    it "has a version number" do
-      expect(HuellaAmbiental::VERSION).not_to be nil
-    end
-
     it "La clase esta definida" do
-      expect(defined?(Alimento)).to be true
+       expect(Object.const_defined?('Alimento')).to be true
     end
   end
 end

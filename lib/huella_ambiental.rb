@@ -1,6 +1,3 @@
 require "huella_ambiental/version"
+require "huella_ambiental/Alimento.rb"
 
-module HuellaAmbiental
-  class Error < StandardError; end
-  # Your code goes here...
-end
