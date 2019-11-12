@@ -16,7 +16,11 @@ class Dieta
       cadena = cadena + x.nombre + " " + x.cantidad.round(1).to_s + "kg\n"
     end
     return cadena
-  end 
+  end
+
+  def impacto_ambiental
+    return [@super_alimento.co2.round(1), @super_alimento.terreno.round(1)]
+  end
 
   def proteinas
     return @super_alimento.proteinas
