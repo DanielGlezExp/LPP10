@@ -14,7 +14,11 @@ RSpec.describe HuellaAmbiental do
     end
 
     @alimento_nuez = Alimento.new(@hash_nuez)
-    @alimento_carne_vaca = Alimento.new(@hash_carne_vaca)   
+    @alimento_carne_vaca = Alimento.new(@hash_carne_vaca)
+
+    @array_comidas_prueba = [@alimento_nuez, @alimento_carne_vaca]
+    @dieta_prueba = Dieta.new (@array_comidas_prueba)
+    #@mi_banco_alimentos = BancoAlimentos.new(@array_datos_comida)   
   end
   
 
@@ -109,17 +113,59 @@ RSpec.describe HuellaAmbiental do
   
   end
 
+
   context "Metodos de formateo para la clase Alimento" do
     it "La clase Alimento tiene bien hecho el metodo to_s" do
       expect("Nombre: nuez\nProteinas: 20.0g\nCarbohidratos: 21.0g\nLipidos: 54.0g\nCO2: 0.3kg\nTerreno: 7.9m2\nCantidad: 1.0kg\n").to eq(@alimento_nuez.to_s) 
     end
   end
 
+
   context "Suma de alimentos y obtencion del valor energetico" do
     it "Se puede obtener el valor energetico de un alimento" do
-      expect(@alimento_nuez.valor_energetico).to eq(650.0)
-    end 
+      expect(@alimento_nuez.valor_energetico.round(1)).to eq(650.0)
+    end
+
+    it "Se pueden sumar dos alimentos" do
+      expect((@aliemnto_nuez + @alimento_carne_vaca).valor_energetico.round(1)).to eq(762.3)
+      expect((@alimento_nuez + @alimento_carne_vaca).co2.round(1)).to eq(50.3)
+      expect((@alimento_nuez + @aliemnto_carne_vaca).proteinas.round(1)).to eq(41.1)
+      expect((@alimento_nuez + @alimento_carne_vaca).terreno.round(1).to eq(171.9)
+    end
+  end
+
+  context "Pruebas para la clase Dieta" do
+    it "Existe la clase dieta" do
+      expect(Object.const_defined?('Dieta')).to be true
+    end
+
+    it "Puedo crear una dieta a partir de un array de comidas" do
+      expect(Dieta.new(@ArrayComidasDieta).instance_of?(Dieta)).to be true
+    end
+
+    it "La dieta me devuelve correctamente la cantidad de calorias" do
+      expect(@dieta_prueba.calorias.round(1)).to eq(762.3)
+    end
+
+    it "La dieta me devuelve correctamente la cantidad de co2" do
+      expect(@dieta_prueba.co2.round(1).to eq(50.3)
+    end
 
   end
+
+  #context "Pruebas para la clase Banco de alimentos" do
+    #it "Existe la clase banco de alimentos" do
+     # expect(Object.const_defined?('BancoAlimentos')).to be true
+    #end
+
+    #it "Puedo crear un banco de alimentos" do
+     # expect(BancoAlimentos.new(@alimentos).instance_of?(BancoAlimentos)).to be true
+    #end
+
+    #it "La clase banco de alimentos me devuelve una dieta representada en un array de alimentos" do
+    #  expect(@mi_banco_alimentos.obtener_dieta(3000.0, 54.0).instance_of?(Dieta)).to be true
+   # end
+
+  #end
 
 end
