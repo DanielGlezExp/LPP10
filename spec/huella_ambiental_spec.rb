@@ -31,7 +31,7 @@ RSpec.describe HuellaAmbiental do
 
     @array_comidas_prueba = [@alimento_nuez, @alimento_carne_vaca]
     @dieta_prueba = Dieta.new (@array_comidas_prueba)
-    #@mi_banco_alimentos = BancoAlimentos.new(@array_datos_comida)   
+    @mi_banco_alimentos = BancoAlimentos.new(@array_datos_comida)   
   end
   
 
@@ -152,6 +152,12 @@ RSpec.describe HuellaAmbiental do
     end
   end
 
+  context "Multiplicacion de un alimento por un numero" do
+    it "Realizar la multiplicacion" do 
+      expect((@alimento_nuez * 0.5).proteinas.round(1)).to eq(10.0)
+    end 
+  end
+
   context "Pruebas para la clase Dieta" do
     it "Existe la clase dieta" do
       expect(Object.const_defined?('Dieta')).to be true
@@ -179,19 +185,27 @@ RSpec.describe HuellaAmbiental do
 
   end
 
-  #context "Pruebas para la clase Banco de alimentos" do
-    #it "Existe la clase banco de alimentos" do
-     # expect(Object.const_defined?('BancoAlimentos')).to be true
-    #end
+  context "Pruebas para la clase Banco de alimentos" do
+    it "Existe la clase banco de alimentos" do
+      expect(Object.const_defined?('BancoAlimentos')).to be true
+    end
 
-    #it "Puedo crear un banco de alimentos" do
-     # expect(BancoAlimentos.new(@alimentos).instance_of?(BancoAlimentos)).to be true
-    #end
+    it "Puedo crear un banco de alimentos" do
+      expect(BancoAlimentos.new(@alimentos).instance_of?(BancoAlimentos)).to be true
+    end
 
-    #it "La clase banco de alimentos me devuelve una dieta representada en un array de alimentos" do
-    #  expect(@mi_banco_alimentos.obtener_dieta(3000.0, 54.0).instance_of?(Dieta)).to be true
-   # end
+    it "La clase banco de alimentos me devuelve una dieta con el metodo obtener dieta" do
+      expect(@mi_banco_alimentos.obtener_dieta(3000.0, 54.0).instance_of?(Dieta)).to be true
+    end
 
-  #end
+    it "La clase banco de alimentos me devuelve una dieta con el metodo obtener dieta, dicha dieta cumple la cantidad de calorias" do
+      expect(@mi_banco_alimentos.obtener_dieta(3000.0, 54.0).valor_energetico.round(1)).to eq(3000.0)
+    end
+
+    it "Cumple el numero de proteinas" do
+      expect(@mi_banco_alimentos.obtener_dieta(3000.0, 54.0).proteinas.round(1)).to eq(54.0)
+    end
+
+  end
 
 end
