@@ -13,7 +13,8 @@ RSpec.describe HuellaAmbiental do
       @hash_alimentos[datos_alimento[:nombre].to_sym] = Alimento.new(datos_alimento)
     end
 
-    @alimento_nuez = Alimento.new(@hash_nuez)   
+    @alimento_nuez = Alimento.new(@hash_nuez)
+    @alimento_carne_vaca = Alimento.new(@hash_carne_vaca)   
   end
   
 
@@ -110,8 +111,14 @@ RSpec.describe HuellaAmbiental do
 
   context "Metodos de formateo para la clase Alimento" do
     it "La clase Alimento tiene bien hecho el metodo to_s" do
-	    expect("Nombre: nuez\nProteinas: 20.0g\nCarbohidratos: 21.0g\nLipidos: 54.0g\nCO2: 0.3kg\nTerreno: 7.9m2\nCantidad: 1.0kg\n").to eq(@alimento_nuez.to_s) 
+      expect("Nombre: nuez\nProteinas: 20.0g\nCarbohidratos: 21.0g\nLipidos: 54.0g\nCO2: 0.3kg\nTerreno: 7.9m2\nCantidad: 1.0kg\n").to eq(@alimento_nuez.to_s) 
     end
+  end
+
+  context "Suma de alimentos y obtencion del valor energetico" do
+    it "Se puede obtener el valor energetico de un alimento" do
+      expect(@nuez.valor_energetico).to eq(650.0)
+    end 
 
   end
 
