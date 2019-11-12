@@ -188,4 +188,15 @@ RSpec.describe HuellaAmbiental do
   end
 
 
+  context "Pruebas para el impacto ambiental" do
+    it "Impacto ambiental dieta de un hombre" do
+      expect(@dieta_hombre.impacto_ambiental).to eq([13.8, 27.1])
+    end
+
+    it "Impacto ambiental dieta de una mujer" do
+      expect(@dieta_mujer.impacto_ambiental).to eq([0.5, 21.5])
+    end
+  end
+
+
 end
