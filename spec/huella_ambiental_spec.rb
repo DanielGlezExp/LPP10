@@ -3,9 +3,22 @@ require './lib/huella_ambiental'
 RSpec.describe HuellaAmbiental do
   before (:all) do
     @hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
+    hash_carne_cordero = {nombre: "carne_cordero", proteinas: 18.0, carbohidratos: 0.0, lipidos: 17.0, co2: 20.0, terreno: 185.0, cantidad: 1.0}
+    hash_camarones = {nombre: "camarones", proteinas: 17.6, carbohidratos: 1.5, lipidos: 0.6, co2: 18.0, terreno: 2.0, cantidad: 1.0}
+    hash_chocolate = {nombre: "chocolate", proteinas: 5.3, carbohidratos: 47.0, lipidos: 30.0, co2: 2.3, terreno: 3.4, cantidad: 1.0}
+    hash_salmon = {nombre: "salmon", proteinas: 19.9, carbohidratos: 0.0, lipidos: 13.6, co2: 6.0, terreno: 3.7, cantidad: 1.0}
+    hash_cerdo = {nombre: "cerdo", proteinas: 21.5, carbohidratos: 0.0, lipidos: 6.3, co2: 7.6, terreno: 11.0, cantidad: 1.0}
+    hash_pollo = {nombre: "pollo", proteinas: 20.6, carbohidratos: 0.0, lipidos: 5.6, co2: 5.7, terreno: 164.0, cantidad: 1.0}
+    hash_queso = {nombre: "queso", proteinas: 25.0, carbohidratos: 1.3, lipidos: 33.0, co2: 11.0, terreno: 164.0, cantidad: 1.0}
+    hash_cerveza = {nombre: "cerveza", proteinas: 0.5, carbohidratos: 3.6, lipidos: 0.0, co2: 0.24, terreno: 164.0, cantidad: 1.0}
+    hash_leche_vaca = {nombre: "leche_vaca", proteinas: 3.3, carbohidratos: 4.8, lipidos: 3.2, co2: 3.2, terreno: 164.0, cantidad: 1.0}
+    hash_huevos = {nombre: "huevos", proteinas: 13.0, carbohidratos: 1.1, lipidos: 11.0, co2: 4.2, terreno: 164.0, cantidad: 1.0}
+    hash_cafe = {nombre: "cafe", proteinas: 0.1, carbohidratos: 0.0, lipidos: 0.0, co2: 0.4, terreno: 164.0, cantidad: 1.0}
+    hash_tofu = {nombre: "tofu", proteinas: 8.0, carbohidratos: 1.9, lipidos: 4.8, co2: 2.0, terreno: 164.0, cantidad: 1.0}
+    hash_lentejas = {nombre: "lentejas", proteinas: 23.5, carbohidratos: 52.0, lipidos: 1.4, co2: 0.4, terreno: 3.4, cantidad: 1.0}
     @hash_nuez = {nombre: "nuez", proteinas: 20.0, carbohidratos: 21.0, lipidos: 54.0, co2: 0.3, terreno: 7.9, cantidad: 1.0}
 
-    @array_datos_comida = [@hash_carne_vaca, @hash_nuez]
+    @array_datos_comida = [@hash_carne_vaca, hash_carne_cordero, hash_camarones, hash_chocolate, hash_salmon, hash_cerdo, hash_pollo, hash_cerveza, hash_leche_vaca, hash_huevos, hash_cafe, hash_tofu, hash_lentejas, @hash_nuez]
 
     @hash_alimentos = {}
 
@@ -126,11 +139,16 @@ RSpec.describe HuellaAmbiental do
       expect(@alimento_nuez.valor_energetico.round(1)).to eq(650.0)
     end
 
-    it "Se pueden sumar dos alimentos" do
-      expect((@aliemnto_nuez + @alimento_carne_vaca).valor_energetico.round(1)).to eq(762.3)
-      expect((@alimento_nuez + @alimento_carne_vaca).co2.round(1)).to eq(50.3)
-      expect((@alimento_nuez + @aliemnto_carne_vaca).proteinas.round(1)).to eq(41.1)
-      expect((@alimento_nuez + @alimento_carne_vaca).terreno.round(1).to eq(171.9)
+    it "Se pueden sumar dos alimentos con su valor energetico" do
+      expect((@array_comidas_prueba[0] + @array_comidas_prueba[1]).valor_energetico.round(1)).to eq(762.3)
+    end
+
+    it "Se pueden sumar dos alimentos con su cantidad de co2" do
+      expect((@array_comidas_prueba[0] + @array_comidas_prueba[1]).co2.round(1)).to eq(50.3)
+    end
+
+    it "Se pueden sumar dos alimentos, comprobando cantidad de terreno" do
+      expect((@array_comidas_prueba[0] + @array_comidas_prueba[1]).terreno.round(1)).to eq(171.9)
     end
   end
 
@@ -140,15 +158,23 @@ RSpec.describe HuellaAmbiental do
     end
 
     it "Puedo crear una dieta a partir de un array de comidas" do
-      expect(Dieta.new(@ArrayComidasDieta).instance_of?(Dieta)).to be true
+      expect(Dieta.new(@array_comidas_prueba).instance_of?(Dieta)).to be true
     end
 
     it "La dieta me devuelve correctamente la cantidad de calorias" do
-      expect(@dieta_prueba.calorias.round(1)).to eq(762.3)
+      expect(@dieta_prueba.valor_energetico.round(1)).to eq(762.3)
     end
 
     it "La dieta me devuelve correctamente la cantidad de co2" do
-      expect(@dieta_prueba.co2.round(1).to eq(50.3)
+      expect(@dieta_prueba.co2.round(1)).to eq(50.3)
+    end
+
+    it "La dieta me devuelve correctamente la cantidad de terreno" do
+      expect(@dieta_prueba.terreno.round(1)).to eq(171.9)
+    end
+
+    it "La dieta se formatea correctamente" do
+      expect(@dieta_prueba.to_s).to eq("nuez 1.0kg\ncarne_vaca 1.0kg\n")
     end
 
   end

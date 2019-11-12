@@ -19,6 +19,13 @@ class Alimento
     return 4.0 * (proteinas + carbohidratos) + 9.0 * lipidos 
   end
 
+  def + (other)
+    raise TypeError, "Se espera como argumento un alimento: Alimento" unless other.is_a?(Alimento)
+    cadena_y = " y "
+    nuevo_nombre = nombre + cadena_y + other.nombre 
+    return Alimento.new(nuevo_nombre, proteinas + other.proteinas, carbohidratos + other.carbohidratos, lipidos + other.lipidos, co2 + other.co2, terreno + other.terreno, cantidad + other.cantidad)
+  end
+
   #MÉTODOS PRIVADOS
   private
 
