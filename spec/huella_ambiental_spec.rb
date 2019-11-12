@@ -10,8 +10,10 @@ RSpec.describe HuellaAmbiental do
     @hash_alimentos = {}
 
     @array_datos_comida.each do |datos_alimento|
-      @hash_alimentos[datos_alimento[:nombre].to_sym] = Alimento.new(datos_alimento) 
-    end   
+      @hash_alimentos[datos_alimento[:nombre].to_sym] = Alimento.new(datos_alimento)
+    end
+
+    @alimento_nuez = Alimento.new(@hash_nuez)   
   end
   
 
@@ -26,34 +28,34 @@ RSpec.describe HuellaAmbiental do
     end
 
     it "La clase Alimento tiene un nombre para alimento" do
-      expect(@hash_alimentos[:nuez].respond_to?(:nombre)).to be true 
+      expect(@alimento_nuez.respond_to?(:nombre)).to be true 
     end
 
     it "La clase Alimento tiene una cantidad de proteinas" do
-      expect(@hash_alimentos[:nuez].respond_to?(:proteinas)).to be true
+      expect(@alimento_nuez.respond_to?(:proteinas)).to be true
     end
 
     it "La clase Alimento tiene una cantidad de carbohidrados" do
-      expect(@hash_alimentos[:nuez].respond_to?(:carbohidratos)).to be true
+      expect(@alimento_nuez.respond_to?(:carbohidratos)).to be true
     end
 
     it "La clase Alimento tiene una cantidad de lipidos" do
-      expect(@hash_alimentos[:nuez].respond_to?(:lipidos)).to be true
+      expect(@alimento_nuez.respond_to?(:lipidos)).to be true
     end
 
     it "La clase Alimento tiene una cantidad de gases de infecto invernadero asociada" do
-      expect(@hash_alimentos[:nuez].respond_to?(:co2)).to be true
+      expect(@alimento_nuez.respond_to?(:co2)).to be true
     end
 
     it "La clase Alimento tiene una cantidad de terreno utilizado asociada" do
-      expect(@hash_alimentos[:carne_vaca].respond_to?(:terreno)).to be true
+      expect(@alimento_nuez.respond_to?(:terreno)).to be true
     end
 
     it "La clase alimento tiene una cantidad de alimento en kilogramos asociada" do
-      expect(@hash_alimentos[:carne_vaca].respond_to?(:cantidad)).to be true
+      expect(@alimento_nuez.respond_to?(:cantidad)).to be true
     end
 
-  end
+  end	
 
 
   context "Crear alimentos" do
@@ -77,33 +79,40 @@ RSpec.describe HuellaAmbiental do
 
   context "Metodos de acceso a los datos de alimento" do
     it "Puedo acceder el anombre" do
-      expect("nuez").to eq(@hash_alimentos[:nuez].nombre)
+      expect("nuez").to eq(@alimento_nuez.nombre)
     end
 
     it "Puedo acceder a la cantidad de proteinas" do
-      expect(20.0).to eq(@hash_alimentos[:nuez].proteinas)
+      expect(20.0).to eq(@alimento_nuez.proteinas)
     end
 
     it "Puedo acceder a la cantidad de carbohidratos" do
-      expect(21.0).to eq(@hash_alimentos[:nuez].carbohidratos)
+      expect(21.0).to eq(@alimento_nuez.carbohidratos)
     end
 
     it "Puedo acceder a la cantidad de Lipidos" do
-      expect(54.0).to eq(@hash_alimentos[:nuez].lipidos)
+      expect(54.0).to eq(@alimento_nuez.lipidos)
     end
 
     it "Puedo acceder a la cantidad de co2" do
-      expect(0.3).to eq(@hash_alimentos[:nuez].co2)
+      expect(0.3).to eq(@alimento_nuez.co2)
     end
 
     it "Puedo acceder a la cantidad de terreno" do
-      expect(7.9).to eq(@hash_alimentos[:nuez].terreno)
+      expect(7.9).to eq(@alimento_nuez.terreno)
     end
 
     it "Puedo acceder a la cantidad de comida en kilogramos" do
-      expect(1.0).to eq(@hash_alimentos[:nuez].cantidad)
+      expect(1.0).to eq(@alimento_nuez.cantidad)
     end
   
+  end
+
+  context "Metodos de formateo para la clase Alimento" do
+    it "La clase Alimento tiene bien hecho el metodo to_s" do
+	    expect("Nombre: Nuez\nProteinas: 20.0g\nCarbohidratos: 21.0g\nLipidos: 54.0g\nCO2: 0.3kg\nTerreno: 7.9m2\nCantidad: 1kg").to eq(@alimento_nuez.to_s) 
+    end
+
   end
 
 end
