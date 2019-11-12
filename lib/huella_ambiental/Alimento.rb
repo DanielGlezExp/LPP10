@@ -1,5 +1,7 @@
 class Alimento
   attr_reader :nombre, :proteinas, :carbohidratos, :lipidos, :co2, :terreno, :cantidad
+
+
   def initialize (*args)
     if args.length == 1 and args[0].instance_of?(Hash) then
       hash_alimento = args[0]
@@ -8,6 +10,10 @@ class Alimento
       inicializar(args[0], args[1], args[2], args[3], args[4], args[5], args[6])
     end
   
+  end
+
+  def to_s
+    return "Nombre: #{nombre}\nProteinas: #{proteinas}g\nCarbohidratos: #{carbohidratos}g\nLipidos: #{lipidos}g\nCO2: #{co2}kg\nTerreno: #{terreno}m2\nCantidad: #{cantidad}kg\n"
   end
   
   #MÉTODOS PRIVADOS

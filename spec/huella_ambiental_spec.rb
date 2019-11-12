@@ -110,7 +110,7 @@ RSpec.describe HuellaAmbiental do
 
   context "Metodos de formateo para la clase Alimento" do
     it "La clase Alimento tiene bien hecho el metodo to_s" do
-	    expect("Nombre: Nuez\nProteinas: 20.0g\nCarbohidratos: 21.0g\nLipidos: 54.0g\nCO2: 0.3kg\nTerreno: 7.9m2\nCantidad: 1kg").to eq(@alimento_nuez.to_s) 
+	    expect("Nombre: nuez\nProteinas: 20.0g\nCarbohidratos: 21.0g\nLipidos: 54.0g\nCO2: 0.3kg\nTerreno: 7.9m2\nCantidad: 1.0kg\n").to eq(@alimento_nuez.to_s) 
     end
 
   end
