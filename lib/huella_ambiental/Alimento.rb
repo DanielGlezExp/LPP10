@@ -26,6 +26,10 @@ class Alimento
     return Alimento.new(nuevo_nombre, proteinas + other.proteinas, carbohidratos + other.carbohidratos, lipidos + other.lipidos, co2 + other.co2, terreno + other.terreno, cantidad + other.cantidad)
   end
 
+  def * (numero)
+    return Alimento.new(nombre, proteinas * numero, carbohidratos * numero, lipidos * numero, co2 * numero, terreno * numero, cantidad * numero)
+  end
+
   #MÉTODOS PRIVADOS
   private
 
