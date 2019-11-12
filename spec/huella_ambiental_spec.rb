@@ -17,6 +17,33 @@ RSpec.describe HuellaAmbiental do
   it "has a version number" do
     expect(HuellaAmbiental::VERSION).not_to be nil
   end
+  
+  context "Existencia de la clase Alimento y sus atributos" do
+    it "La clase alimento esta definida" do
+      expect(Object.const_defined?('Alimento')).to be true
+    end
+    it "La clase Alimento tiene un nombre para alimento" do
+      expect(@hash_alimentos[:nuez].respond_to?(:nombre)).to be true 
+    end
+    it "La clase Alimento tiene una cantidad de proteinas" do
+      expect(@hash_alimentos[:nuez].respond_to?(:proteinas)).to be true
+    end
+    it "La clase Alimento tiene una cantidad de carbohidrados" do
+      expect(@hash_alimentos[:nuez].respond_to?(:carbohidratos)).to be true
+    end
+    it "La clase Alimento tiene una cantidad de lipidos" do
+      expect(@hash_alimentos[:nuez].respond_to?(:lipidos)).to be true
+    end
+    it "La clase Alimento tiene una cantidad de gases de infecto invernadero asociada" do
+      expect(@hash_alimentos[:nuez].respond_to?(:co2)).to be true
+    end
+    it "La clase Alimento tiene una cantidad de terreno utilizado asociada" do
+      expect(@hash_alimentos[:carne_vaca].respond_to?(:terreno)).to be true
+    end
+    it "La clase alimento tiene una cantidad de alimento en kilogramos asociada" do
+      expect(@hash_alimentos[:carne_vaca].respond_to?(:cantidad)).to be true
+    end
+  end
 
   context "Crear alimentos" do
     it "Puedo crear un alimento" do
@@ -33,15 +60,6 @@ RSpec.describe HuellaAmbiental do
       end
     end
 
-  end
-
-  context "Existencia de la clase alimento y sus metodos / atributos" do
-    it "La clase alimento esta definida" do
-       expect(Object.const_defined?('Alimento')).to be true
-    end
-   # it "La clase alimento tiene un nombre para alimento" do
-      
-    #end
   end
 
 end
