@@ -117,7 +117,7 @@ RSpec.describe HuellaAmbiental do
 
   context "Suma de alimentos y obtencion del valor energetico" do
     it "Se puede obtener el valor energetico de un alimento" do
-      expect(@nuez.valor_energetico).to eq(650.0)
+      expect(@alimento_nuez.valor_energetico).to eq(650.0)
     end 
 
   end
