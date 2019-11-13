@@ -7,6 +7,10 @@
 
 Práctica 6. Desarrollo Dirigido por Pruebas.
 
+## Description
+
+We're learning to use TDD! :)
+
 ## Installation
 
 Add this line to your application's Gemfile:
