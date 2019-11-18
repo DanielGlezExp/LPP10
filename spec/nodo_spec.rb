@@ -1,6 +1,6 @@
 require './lib/huella_ambiental'
 
-RSpec.describe Lista do
+RSpec.describe Nodo do
   before (:all) do
     hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
     hash_carne_cordero = {nombre: "carne_cordero", proteinas: 18.0, carbohidratos: 0.0, lipidos: 17.0, co2: 20.0, terreno: 185.0, cantidad: 1.0}
@@ -77,7 +77,7 @@ RSpec.describe Lista do
     end
 
     it "nodo tiene metodo de formateo" do
-      expect(@nodo_camarones.to_s).to eq("camarones")
+	    expect(@nodo_camarones.to_s).to eq("Nombre: camarones\nProteinas: 17.6g\nCarbohidratos: 1.5g\nLipidos: 0.6g\nCO2: 18.0kg\nTerreno: 2.0m2\nCantidad: 1.0kg\n")
     end
   
   end
