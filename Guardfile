@@ -41,6 +41,9 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
+  # Ruby source files
+  watch(%r{^lib/gema/.+\.rb})
+  watch(%r{`lib/gema.rb'})
 
   # RSpec files
   rspec = dsl.rspec

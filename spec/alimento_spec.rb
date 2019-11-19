@@ -31,7 +31,7 @@ RSpec.describe Alimento do
   it "has a version number" do
     expect(HuellaAmbiental::VERSION).not_to be nil
   end
-  
+ 
 
   context "Existencia de la clase Alimento y sus atributos" do
     it "La clase alimento esta definida" do
