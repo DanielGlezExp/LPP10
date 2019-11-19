@@ -47,7 +47,7 @@ RSpec.describe Lista do
     vasca.insert_head(alimento_chocolate)
     vasca.insert_head(alimento_lentejas)
     vasca.insert_head(alimento_huevos)
-    @dieta_vaca = vasca.sum
+    @dieta_vasca = vasca.sum
 
     #vegetaria
     vegetaria = Lista.new
@@ -180,13 +180,13 @@ RSpec.describe Lista do
   end
 
   
-  context "Preubas dietas co2 " do
+  context "Preubas dietas co2 ANUALES " do
     it " espanola" do
       expect(@dieta_espanola.co2.round(2)).to eq(31.54)
     end
     
     it " vasca" do
-      expect(@dieta_vaca.co2.round(2)).to eq(6.9)
+      expect(@dieta_vasca.co2.round(2)).to eq(6.9)
     end
 
     it " vegetaria" do
@@ -201,6 +201,30 @@ RSpec.describe Lista do
       expect(@dieta_carne.co2.round(2)).to eq(74.6)
     end
   end
+
+
+  context "Preubas dietas co2 DIARIAS " do
+    it " espanola" do
+      expect((@dieta_espanola.co2/365).round(4)).to eq((31.54/365).round(4))
+    end
+    
+    it " vasca" do
+      expect((@dieta_vasca.co2/365).round(4)).to eq((6.9/365).round(4))
+    end
+
+    it " vegetaria" do
+      expect((@dieta_vegetaria.co2/365).round(4)).to eq((7.8/365).round(4))
+    end
+
+    it " vegetaliana" do
+      expect((@dieta_vegetaliana.co2/365).round(4)).to eq((2.4/365).round(4))
+    end
+
+    it " locura carne" do
+      expect((@dieta_carne.co2/365).round(4)).to eq((74.6/365).round(4))
+    end
+  end
+  
 
 
 end
