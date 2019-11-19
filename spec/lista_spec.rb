@@ -13,10 +13,10 @@ RSpec.describe Lista do
     hash_cerveza = {nombre: "cerveza", proteinas: 0.5, carbohidratos: 3.6, lipidos: 0.0, co2: 0.24, terreno: 164.0, cantidad: 1.0}
     hash_leche_vaca = {nombre: "leche_vaca", proteinas: 3.3, carbohidratos: 4.8, lipidos: 3.2, co2: 3.2, terreno: 164.0, cantidad: 1.0}
     hash_huevos = {nombre: "huevos", proteinas: 13.0, carbohidratos: 1.1, lipidos: 11.0, co2: 4.2, terreno: 164.0, cantidad: 1.0}
-    #hash_cafe = {nombre: "cafe", proteinas: 0.1, carbohidratos: 0.0, lipidos: 0.0, co2: 0.4, terreno: 164.0, cantidad: 1.0}
-    #hash_tofu = {nombre: "tofu", proteinas: 8.0, carbohidratos: 1.9, lipidos: 4.8, co2: 2.0, terreno: 2.2, cantidad: 1.0}
+    hash_cafe = {nombre: "cafe", proteinas: 0.1, carbohidratos: 0.0, lipidos: 0.0, co2: 0.4, terreno: 164.0, cantidad: 1.0}
+    hash_tofu = {nombre: "tofu", proteinas: 8.0, carbohidratos: 1.9, lipidos: 4.8, co2: 2.0, terreno: 2.2, cantidad: 1.0}
     hash_lentejas = {nombre: "lentejas", proteinas: 23.5, carbohidratos: 52.0, lipidos: 1.4, co2: 0.4, terreno: 3.4, cantidad: 1.0}
-    hash_nuez = {nombre: "nuez", proteinas:20.0, carbohidrados:21.0, lipidos:54.0, co2:0.4, terreno:7.9, cantidad:1.0}
+    #hash_nuez = {nombre: "nuez", proteinas: 20.0, carbohidrados: 21.0, lipidos: 54.0, co2: 0.4, terreno: 7.9, cantidad: 1.0}
     
     @alimento_carne_vaca = Alimento.new(@hash_carne_vaca)
     @alimento_cordero = Alimento.new(hash_carne_cordero)
@@ -26,8 +26,10 @@ RSpec.describe Lista do
     alimento_cerveza = Alimento.new(hash_cerveza)
     alimento_leche = Alimento.new(hash_leche_vaca)
     alimento_huevos = Alimento.new(hash_huevos)
+    alimento_cafe = Alimento.new(hash_cafe)
+    alimento_tofu = Alimento.new(hash_tofu)
     alimento_lentejas = Alimento.new(hash_lentejas)
-    alimento_nuez = Alimento.new(hash_nuez) 
+    #alimento_nuez = Alimento.new(hash_nuez) 
 
     @lista = Lista.new
 
@@ -45,21 +47,21 @@ RSpec.describe Lista do
     vasca.insert_head(alimento_chocolate)
     vasca.insert_head(alimento_lentejas)
     vasca.insert_head(alimento_huevos)
-    #@dieta_vaca = vasca.sum
+    @dieta_vaca = vasca.sum
 
     #vegetaria
     vegetaria = Lista.new
     vegetaria.insert_head(alimento_leche)
+
     vegetaria.insert_head(alimento_huevos)
     vegetaria.insert_head(alimento_lentejas)
-    vegetaria.insert_head(alimento_nuez)
-    #@dieta_vegetaria = vegetaria.sum
+    @dieta_vegetaria = vegetaria.sum
 
     #vegetaliana
     vegetaliana = Lista.new
-    vegetaliana.insert_head(alimento_nuez)
-    vegetaliana.insert_head(alimento_nuez)
-    #@dieta_vegetaliana = vegetaliana.sum
+    vegetaliana.insert_head(alimento_cafe)
+    vegetaliana.insert_head(alimento_tofu)
+    @dieta_vegetaliana = vegetaliana.sum
 
     #locura por la carne
     carne = Lista.new
@@ -67,7 +69,7 @@ RSpec.describe Lista do
     carne.insert_head(@alimento_cordero)
     carne.insert_head(alimento_lentejas)
     carne.insert_head(alimento_huevos)
-    #@dieta_carne = carne.sum
+    @dieta_carne = carne.sum
 
 
   end
@@ -178,9 +180,25 @@ RSpec.describe Lista do
   end
 
   
-  context "Preubas dietas" do
-    it "co2 espanola" do
-      expect(@dieta_espanola.co2).to eq(31.54)
+  context "Preubas dietas co2 " do
+    it " espanola" do
+      expect(@dieta_espanola.co2.round(2)).to eq(31.54)
+    end
+    
+    it " vasca" do
+      expect(@dieta_vaca.co2.round(2)).to eq(6.9)
+    end
+
+    it " vegetaria" do
+      expect(@dieta_vegetaria.co2.round(2)).to eq(7.8)
+    end
+
+    it " vegetaliana" do
+      expect(@dieta_vegetaliana.co2.round(2)).to eq(2.4)
+    end
+
+    it " locura carne" do
+      expect(@dieta_carne.co2.round(2)).to eq(74.6)
     end
   end
 
