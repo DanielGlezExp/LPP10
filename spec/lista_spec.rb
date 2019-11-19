@@ -2,7 +2,7 @@ require './lib/huella_ambiental'
 
 RSpec.describe Lista do
   before (:all) do
-    hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
+    @hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
     hash_carne_cordero = {nombre: "carne_cordero", proteinas: 18.0, carbohidratos: 0.0, lipidos: 17.0, co2: 20.0, terreno: 185.0, cantidad: 1.0}
     hash_camarones = {nombre: "camarones", proteinas: 17.6, carbohidratos: 1.5, lipidos: 0.6, co2: 18.0, terreno: 2.0, cantidad: 1.0}
     #hash_chocolate = {nombre: "chocolate", proteinas: 5.3, carbohidratos: 47.0, lipidos: 30.0, co2: 2.3, terreno: 3.4, cantidad: 1.0}
@@ -21,7 +21,7 @@ RSpec.describe Lista do
     @alimento_cordero = Alimento.new(hash_carne_cordero)
     @alimento_camarones = Alimento.new(hash_camarones)
 
-    
+   
 
     @lista = Lista.new
 
@@ -33,19 +33,19 @@ RSpec.describe Lista do
     end
     
     it "puedo crear una lista" do
-      expect(Nodo.new(@alimento_carne_vaca).instance_of?(Nodo)).to be true
+      expect(@lista.instance_of?(Lista)).to be true
     end
     
     it "Existe la cabeza de la lista" do
-      expect(@nodo_vaca.respond_to?(:value)).to be true 
+      expect(@lista.respond_to?(:head)).to be true 
     end
 
     it "Existe la cola de la lista" do
-      expect(@nodo_vaca.respond_to?(:next)).to be true
+      expect(@lista.respond_to?(:tail)).to be true
     end
 
     it "Existe el tamanio de la lista" do
-      expect(@nodo_vaca.respond_to?(:prev)).to be true
+      expect(@lista.respond_to?(:size)).to be true
     end
 
   end
@@ -54,8 +54,8 @@ RSpec.describe Lista do
   context "Prueba de los metodos de Lista" do
     it "Puedo insertar un unico elemento por la cabeza" do
       mi_lista = Lista.new
-      mi_lista.insert_head(@alimento_camarones)
-      expect(mi_lista.head.value.name).to eq("camarones")
+      mi_lista.insert_head(1)
+      expect(mi_lista.head.value).to eq(1)
       expect(mi_lista.head).to eq(mi_lista.tail)
       expect(mi_lista.size).to eq(1)
     end
@@ -63,41 +63,66 @@ RSpec.describe Lista do
     it "Puedo insertar un unico elemento en la cola" do
       mi_lista = Lista.new
       mi_lista.insert_tail(@alimento_camarones)
-      expect(mi_lista.tail.value.name).to eq("camarones")
+      expect(mi_lista.tail.value.nombre).to eq("camarones")
       expect(mi_lista.head).to eq(mi_lista.tail)
       expect(mi_lista.size).to eq(1)
     end
 
-    it "Puedo insertar varios elementos en la lista" do
-      @lista.insert_tail(@alimento_carne_vaca)
-      @lista.insert_tail(@alimento_camarones)
-      expect(@lista.head.value).to eq(@alimento_carne_vaca)
-      expect(@lista.tail.value).to eq(@alimento_camarones)
+    it "Puedo insertar varios elementos en la lista parte 1" do
+      @lista.insert_head(@alimento_carne_vaca)  # CARNE_VACA -> NIL
+      @lista.insert_tail(@alimento_camarones)  # CARNE_VACA -> CAMARONES
+      expect(@lista.head.value.nombre).to eq("carne_vaca")
+    end
+
+    it "Puedo insertar varios elementos en la lista parte 2" do
+      expect(@lista.tail.value.nombre).to eq(@alimento_camarones.nombre)
+    end
+
+    it "Puedo insertar varios elementos en la lista parte 3" do
       expect(@lista.size).to eq(2)
     end
 
-    it "Dado un nodo, si esta en al lista, insertar un nuevo elemento tras dicho nodo (si no esta en la lista, no hace nada)" do
-      @lista.insert_next(@lista.head, @alimento_cordero)
-      expect(@lista.head.next).to eq(@alimento_cordero)
+    it "Dado un nodo, si esta en la lista, insertar un nuevo elemento tras dicho nodo (si no esta en la lista, no hace nada) 1/3" do
+      @lista.insert_next(@lista.head, @alimento_cordero)  #CARNE_VACA -> CARNE_CORDERO -> CAMARONES
+      expect(@lista.head.next.value.nombre).to eq(@alimento_cordero.nombre)
+    end
+
+    it "Dado un nodo, si esta en la lista, insertar un nuevo elemento tras dicho nodo (si no esta en la lista, no hace nada) 2/3" do
+      expect(@lista.tail.value.nombre).to eq(@alimento_camarones.nombre)
+    end
+
+    it "Dado un nodo, si esta en la lista, insertar un nuevo elemento tras dicho nodo (si no esta en la lista, no hace nada) 3/3" do
       expect(@lista.size).to eq(3)
     end
 
-    it "Puedo eliminar la cabeza" do
-      @lista.pop_head
-      expect(@lista.head.value).to eq(@alimento_cordero)
+    it "Puedo eliminar la cabeza 1/2" do
+      @lista.pop_head  # CARNE_CORDERO -> CAMARONES
+      expect(@lista.head.value.nombre).to eq(@alimento_cordero.nombre)
+    end
+
+    it "Puedo eliminar la cabeza 2/2" do
       expect(@lista.size).to eq(2)
     end
 
-    it "Puedo eliminar la cola" do
-      @lista.pop_tail
-      expect(@lista.tail.value).to eq(@alimento_cordero)
+    it "Puedo eliminar la cola 1/2" do
+      @lista.pop_tail  # CARNE_CORDERO -> NIL
+      expect(@lista.tail.value.nombre).to eq(@alimento_cordero.nombre)
+    end
+
+    it "Puedo eliminar la cola 2/2" do
       expect(@lista.size).to eq(1)
     end
 
-    it "Puedo eliminar un nodo, si esta en la lista" do
-      @lista.pop(@lista.head)
+    it "Puedo eliminar un nodo, si esta en la listai 1/3" do
+      @lista.pop(@lista.head) #NIL
       expect(@lista.head).to eq(nil)
+    end
+
+    it "Puedo eliminar un nodo, si esta en la lista 2/3" do
       expect(@lista.tail).to eq(nil)
+    end
+
+    it "Puedo eliminar un nodo, si esta en la lista 3/3" do
       expect(@lista.size).to eq(0)
     end
 

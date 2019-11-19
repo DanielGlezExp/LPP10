@@ -21,9 +21,12 @@ RSpec.describe Nodo do
     alimento_cordero = Alimento.new(hash_carne_cordero)
     alimento_camarones = Alimento.new(hash_camarones)
 
-    @nodo_vaca = Nodo.new(@alimento_carne_vaca)
-    @nodo_cordero = Nodo.new(alimento_cordero)
-    @nodo_camarones = Nodo.new(alimento_camarones)
+    @nodo_vaca = Nodo.new
+    @nodo_vaca.value = @alimento_carne_vaca
+    @nodo_cordero = Nodo.new
+    @nodo_cordero.value = alimento_cordero
+    @nodo_camarones = Nodo.new
+    @nodo_camarones.value = alimento_camarones
 
     @nodo_vaca.next = @nodo_cordero
     @nodo_cordero.prev = @nodo_vaca
@@ -37,7 +40,8 @@ RSpec.describe Nodo do
     end
     
     it "puedo crear un nodo almacenando un alimento" do
-      expect(Nodo.new(@alimento_carne_vaca).instance_of?(Nodo)).to be true
+      expect(Nodo.new.instance_of?(Nodo)).to be true
+      expect(@nodo_vaca.value).to eq(@alimento_carne_vaca)
     end
     
     it "Tiene un valor" do
@@ -68,6 +72,7 @@ RSpec.describe Nodo do
       expect(@nodo_cordero.next).to eq(@nodo_camarones)
     end
 
+
     it "Puedo acceder al nodo anterior cuando este no existe" do
       expect(@nodo_vaca.prev).to eq(nil)
     end
@@ -77,7 +82,7 @@ RSpec.describe Nodo do
     end
 
     it "nodo tiene metodo de formateo" do
-	    expect(@nodo_camarones.to_s).to eq("Nombre: camarones\nProteinas: 17.6g\nCarbohidratos: 1.5g\nLipidos: 0.6g\nCO2: 18.0kg\nTerreno: 2.0m2\nCantidad: 1.0kg\n")
+      expect(@nodo_camarones.to_s).to eq("Nombre: camarones\nProteinas: 17.6g\nCarbohidratos: 1.5g\nLipidos: 0.6g\nCO2: 18.0kg\nTerreno: 2.0m2\nCantidad: 1.0kg\n")
     end
   
   end
