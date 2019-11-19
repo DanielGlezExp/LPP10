@@ -34,6 +34,7 @@ RSpec.describe Lista do
     #~~~~~~LISTAS DE DIETAS
     #ESPAÑOLA
     espanola = Lista.new
+    espanola.insert_head(@alimento_camarones)
     espanola.insert_head(alimento_chocolate)
     espanola.insert_head(alimento_cerveza)
     espanola.insert_head(alimento_queso)
@@ -44,7 +45,7 @@ RSpec.describe Lista do
     vasca.insert_head(alimento_chocolate)
     vasca.insert_head(alimento_lentejas)
     vasca.insert_head(alimento_huevos)
-    @dieta_vaca = vasca.sum
+    #@dieta_vaca = vasca.sum
 
     #vegetaria
     vegetaria = Lista.new
@@ -52,13 +53,13 @@ RSpec.describe Lista do
     vegetaria.insert_head(alimento_huevos)
     vegetaria.insert_head(alimento_lentejas)
     vegetaria.insert_head(alimento_nuez)
-    @dieta_vegetaria = vegetaria.sum
+    #@dieta_vegetaria = vegetaria.sum
 
     #vegetaliana
     vegetaliana = Lista.new
     vegetaliana.insert_head(alimento_nuez)
     vegetaliana.insert_head(alimento_nuez)
-    @dieta_vegetaliana = vegetaliana.sum
+    #@dieta_vegetaliana = vegetaliana.sum
 
     #locura por la carne
     carne = Lista.new
@@ -66,7 +67,7 @@ RSpec.describe Lista do
     carne.insert_head(@alimento_cordero)
     carne.insert_head(alimento_lentejas)
     carne.insert_head(alimento_huevos)
-    @dieta_carne = carne.sum
+    #@dieta_carne = carne.sum
 
 
   end
@@ -179,7 +180,7 @@ RSpec.describe Lista do
   
   context "Preubas dietas" do
     it "co2 espanola" do
-      expect(@dieta.espanola.co2).to eq(1.0)
+      expect(@dieta_espanola.co2).to eq(31.54)
     end
   end
 

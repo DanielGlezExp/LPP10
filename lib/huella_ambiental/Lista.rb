@@ -152,4 +152,22 @@ class Lista
     return false
   end
 
+
+  #OTROS METODOS
+  def sum
+    if (size == 0) then
+      return false
+    end
+    
+    valor = @head.value
+    nodo_aux = @head.next
+    while (nodo_aux != nil) do
+      valor = valor + nodo_aux.value
+      
+      nodo_aux = nodo_aux.next
+    end
+
+    return valor
+  end
+
 end
