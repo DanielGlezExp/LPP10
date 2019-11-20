@@ -42,8 +42,9 @@ guard :rspec, cmd: "bundle exec rspec" do
 
   # Feel free to open issues for suggestions and improvements
   # Ruby source files
-  watch(%r{^lib/gema/.+\.rb})
-  watch(%r{`lib/gema.rb'})
+  # watch(%r{^lib/gema/.+\.rb})
+  watch(%r{^lib/huella_ambiental/(.+)\.rb$}) { dsl.rspec.spec_dir }
+  watch(%r{`lib/huella_ambiental.rb'})
 
   # RSpec files
   rspec = dsl.rspec
