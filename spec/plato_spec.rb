@@ -124,6 +124,10 @@ RSpec.describe Plato do
       expect(@plato_carne == @plato_vegetaria).to be(false)
     end
 
+    it " == con numero" do
+      expect(@plato_carne != 375).to be(true)
+    end
+
     it "!=" do
       expect(@plato_carne != @plato_vegetaria).to be(true)
     end

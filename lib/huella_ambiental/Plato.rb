@@ -22,6 +22,11 @@ class Plato
   end
 
   def <=> (other)
+    if (other.is_a?(Integer) or other.is_a?(Float)) then
+      return @v_calorico <=> other
+    end
+    raise TypeError, "El parametro para comparar con plato debe ser una instancia de plato o clases derivadas, o un entero o flotante" unless other.is_a?(Plato)
+
     # if (@v_calorico == other.v_calorico) then
       # return @nombre <=> other.nombre #SE podrian poner otros atributos y mas condicuiones
     # end

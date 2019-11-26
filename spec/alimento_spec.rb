@@ -151,24 +151,32 @@ RSpec.describe Alimento do
   end
 
   context "Puedo comparar alimentos" do
-    it " Iguales?" do
+    it " ==" do
       nuez2 = Alimento.new(@hash_nuez)
       expect(@alimento_nuez == nuez2 ).to be(true)
     end
 
-    it " MenorIgual?" do
+    it " == Comparando con un numero" do
+      expect(@alimento_nuez == 650.0).to be(true)
+    end
+
+    it " !=" do
+      expect(@alimento_nuez != @alimento_carne_vaca).to be(true)
+    end
+
+    it " <=" do
       expect(@alimento_nuez <= @alimento_carne_vaca).to be(false)
     end
 
-    it " MayorIgual" do
+    it " >=" do
       expect(@alimento_nuez >= @alimento_carne_vaca).to be(true)
     end
 
-    it " MayorQue" do
+    it " >" do
       expect(@alimento_nuez > @alimento_carne_vaca).to be(true)
     end
     
-    it " MenorQue" do
+    it " <" do
       expect(@alimento_nuez < @alimento_carne_vaca).to be(false)
     end
   end

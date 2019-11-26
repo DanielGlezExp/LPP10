@@ -26,8 +26,8 @@ RSpec.describe Lista do
     alimento_cerveza = Alimento.new(hash_cerveza)
     alimento_leche = Alimento.new(hash_leche_vaca)
     alimento_huevos = Alimento.new(hash_huevos)
-    alimento_cafe = Alimento.new(hash_cafe)
-    alimento_tofu = Alimento.new(hash_tofu)
+    @alimento_cafe = Alimento.new(hash_cafe)
+    @alimento_tofu = Alimento.new(hash_tofu)
     alimento_lentejas = Alimento.new(hash_lentejas)
     #alimento_nuez = Alimento.new(hash_nuez) 
 
@@ -58,10 +58,10 @@ RSpec.describe Lista do
     @dieta_vegetaria = vegetaria.sum
 
     #vegetaliana
-    vegetaliana = Lista.new
-    vegetaliana.insert_head(alimento_cafe)
-    vegetaliana.insert_head(alimento_tofu)
-    @dieta_vegetaliana = vegetaliana.sum
+    @lista_vegetaliana = Lista.new
+    @lista_vegetaliana.insert_head(@alimento_cafe)
+    @lista_vegetaliana.insert_head(@alimento_tofu)
+    @dieta_vegetaliana = @lista_vegetaliana.sum
 
     #locura por la carne
     lista_carne = Lista.new
@@ -70,14 +70,6 @@ RSpec.describe Lista do
     lista_carne.insert_head(alimento_lentejas)
     lista_carne.insert_head(alimento_huevos)
     @dieta_carne = lista_carne.sum
-
-
-    #para enumarable
-    @lista_enteros = Lista.new
-    @lista_enteros.insert_head(4)
-    @lista_enteros.insert_head(1)
-    @lista_enteros.insert_head(2)
-    @lista_enteros.insert_head(3)
 
 
   end
@@ -260,26 +252,26 @@ RSpec.describe Lista do
   #------------------------------PRACTICA 8 ------------------------
   context "prueba enummerable " do
     it " collect" do
-      r = @lista_enteros.collect { |x| x + 1 }
-      expect(r).to eq([4, 3, 2, 5])
+      r = @lista_vegetaliana.collect { |x| x }
+      expect(r).to eq([@alimento_tofu, @alimento_cafe])
     end
 
     it " select" do
-      r = @lista_enteros.select { |x| x>=2 }
-      expect(r).to eq([3, 2, 4])
+      r = @lista_vegetaliana.select { |x| x > @alimento_tofu }
+      expect(r).to eq([])
     end
 
     it " max" do
-      expect(@lista_enteros.max).to eq(4)
+      expect(@lista_vegetaliana.max).to eq(@alimento_tofu)
     end
 
     it " min" do
-      expect(@lista_enteros.min).to eq(1)
+      expect(@lista_vegetaliana.min).to eq(@alimento_cafe)
     end
 
     it " sort" do
-      r = @lista_enteros.sort
-      expect(r).to eq([1, 2, 3, 4])
+      r = @lista_vegetaliana.sort
+      expect(r).to eq([@alimento_cafe, @alimento_tofu])
     end
     
   end

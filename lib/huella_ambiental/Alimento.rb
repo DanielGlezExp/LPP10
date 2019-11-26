@@ -32,7 +32,10 @@ class Alimento
   end
 
   def <=> (other)
-    raise TypeError, "Se espera coo argumento un alimento" unless other.is_a?(Alimento)
+    if (other.is_a?(Integer) or other.is_a?(Float)) then
+      return valor_energetico <=> other
+    end
+    raise TypeError, "Se espera como argumento un alimento, un float o un integer" unless other.is_a?(Alimento)
     #if (valor_energetico == other.valor_energetico) then
      # if (@terreno == other.terreno) then
       #  return @co2 <=> other.co2
