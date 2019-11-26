@@ -119,6 +119,33 @@ RSpec.describe Plato do
     
   end
 
+  context " Comparaciones" do
+    it " ==" do
+      expect(@plato_carne == @plato_vegetaria).to be(false)
+    end
+
+    it "!=" do
+      expect(@plato_carne != @plato_vegetaria).to be(true)
+    end
+
+    it " <=" do
+      expect(@plato_carne <= @plato_vegetaria).to be(false)
+    end
+
+    it " <" do
+      expect(@plato_carne < @plato_vegetaria).to be(false)
+    end
+
+    it " >=" do
+      expect(@plato_carne >= @plato_vegetaria).to be(true)
+    end
+
+    it " >" do
+      expect(@plato_carne > @plato_vegetaria).to be(true)
+    end
+
+  end
+
 
 end
 

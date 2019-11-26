@@ -66,9 +66,13 @@ RSpec.describe PlatoExtendido do
 
 
 
-   #PLATOS
+   #PLATO
+   @plato_espanol = Plato.new(lista_espanola, "ole ole")
+   @plato_vasco = Plato.new(lista_vasca, "asociacion de alimentos independientes")
+   @plato_vegetaliana = Plato.new(lista_vegetaliana, "transcendencia")
    @plato_extendido_carne = PlatoExtendido.new(@lista_carne, "canibal con lentejas")
    @plato_extendido_vegetaria = PlatoExtendido.new(lista_vegetaria, "El punto medio a la matanza")
+   @plato_carne = Plato.new(@lista_carne, "canibal con lentejas sin preocupaciones")
 
   end
   
@@ -136,6 +140,38 @@ RSpec.describe PlatoExtendido do
       expect(@plato_extendido_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\nco2: 7.8\nterreno: 18.0\n")
     end
     
+  end
+
+  
+  context "Comparacion de platos" do
+    it " ==" do
+      expect(@plato_extendido_carne == @plato_carne).to be(true)
+    end
+
+    it "!=" do
+      expect(@plato_carne != @plato_extendido_vegetaria).to be(true)
+    end
+
+    it " <=" do
+      expect(@plato_extendido_carne <= @plato_extendido_vegetaria).to be(true)
+    end
+
+    
+    it " <" do
+      expect(@plato_extendido_carne < @plato_extendido_vegetaria).to be(true)
+    end
+
+
+    it " =>" do
+      expect(@plato_extendido_carne => @plato_extendido_vegetaria).to be(false)
+    end
+
+
+    it " >" do
+      expect(@plato_extendido_carne > @plato_extendido_vegetaria).to be(false)
+    end
+
+
   end
 
 
