@@ -69,7 +69,7 @@ RSpec.describe Plato do
 
 
    #PLATOS
-   @plato_carne = Plato.new(@lista_carne)
+   @plato_carne = Plato.new(@lista_carne, "canibal con lentejas")
 
   end
   
@@ -80,6 +80,10 @@ RSpec.describe Plato do
 
     it " Puedo instanciar un objeto de la clase Plato" do
       expect(Plato.new(@lista_carne).instance_of?(Plato)).to be(true)
+    end
+
+    it "Existe un nombre para plato" do
+      expect(Plato.new(@lista_carne, "canibal con lentejas").nombre).to eq("canibal con lentejas")
     end
 
     it " Existe conjunto de alimentos" do
