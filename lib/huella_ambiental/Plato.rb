@@ -1,7 +1,7 @@
 
 
 class Plato
-  attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas, :p_lipidos, :p_carbohidratos
+  attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas, :p_lipidos, :p_carbohidratos, :v_calorico
 
   def initialize(lista_alimentos)
     raise TypeError, "El parametro de entrada deben ser instancias de la clase lista" unless lista_alimentos.instance_of?(Lista)
@@ -19,6 +19,7 @@ class Plato
     proteinas_totales = 0.0
     lipidos_totales = 0.0
     carbohidratos_totales = 0.0
+    @v_calorico= 0.0
 
     @lista_alimentos.each { |alimento|
 
@@ -29,6 +30,7 @@ class Plato
       proteinas_totales += alimento.proteinas
       lipidos_totales += alimento.lipidos
       carbohidratos_totales += alimento.carbohidratos
+      @v_calorico += alimento.valor_energetico
 
     }
 

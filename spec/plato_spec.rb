@@ -105,8 +105,8 @@ RSpec.describe Plato do
       expect(@plato_carne.p_carbohidratos.round(2)).to eq(32.94)
     end
 
-    it " valor calorico del plato" do
-      expect(@plato_carne.v_calorico.round(2)).to eq(245.4)    
+    it " valor calorico del plato" do	
+      expect(@plato_carne.v_calorico.round(2)).to eq(807.3)    
     end
     
   end
