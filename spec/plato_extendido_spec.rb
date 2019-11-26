@@ -153,22 +153,22 @@ RSpec.describe PlatoExtendido do
     end
 
     it " <=" do
-      expect(@plato_extendido_carne <= @plato_extendido_vegetaria).to be(true)
+      expect(@plato_extendido_carne <= @plato_extendido_vegetaria).to be(false)
     end
 
     
     it " <" do
-      expect(@plato_extendido_carne < @plato_extendido_vegetaria).to be(true)
+      expect(@plato_extendido_carne < @plato_extendido_vegetaria).to be(false)
     end
 
 
     it " =>" do
-      expect(@plato_extendido_carne => @plato_extendido_vegetaria).to be(false)
+      expect(@plato_extendido_carne >= @plato_extendido_vegetaria).to be(true)
     end
 
 
     it " >" do
-      expect(@plato_extendido_carne > @plato_extendido_vegetaria).to be(false)
+      expect(@plato_extendido_carne > @plato_extendido_vegetaria).to be(true)
     end
 
 

@@ -1,6 +1,8 @@
 
 
 class Plato
+  include Comparable
+
   attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas, :p_lipidos, :p_carbohidratos, :v_calorico, :nombre
 
   def initialize(lista_alimentos, nombre)
@@ -17,6 +19,13 @@ class Plato
       resultado += "#{x[:nombre]}: #{x[:cantidad]}g\n"
     }
     return resultado
+  end
+
+  def <=> (other)
+    # if (@v_calorico == other.v_calorico) then
+      # return @nombre <=> other.nombre #SE podrian poner otros atributos y mas condicuiones
+    # end
+    @v_calorico <=> other.v_calorico
   end
 
   #~~~~~~~~~~~~~~~~~METODOS PRIVADOS
