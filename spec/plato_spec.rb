@@ -67,17 +67,28 @@ RSpec.describe Plato do
     @lista_carne.insert_head(alimento_huevos)
 
 
+
+   #PLATOS
+   @plato_carne = Plato.new(@lista_carne)
+
   end
   
   context "Pruebas para la existencia " do
-    it "Existe la clase Plato" do
+    it " Existe la clase Plato" do
       expect(Object.const_defined?('Plato')).to be true
     end
 
-    it "Puedo instanciar un objeto de la clase Plato" do
+    it " Puedo instanciar un objeto de la clase Plato" do
       expect(Plato.new(@lista_carne).instance_of?(Plato)).to be(true)
     end
 
+    it " Existe conjunto de alimentos" do
+      expect(@plato_carne.respond_to?(:lista_alimentos)).to be(true)
+    end
+
+    it " Existe la cantidad de alimentos en gramos" do
+      expect(@plato_carne.respond_to?(:cantidad_alimentos_gramos)).to be(true)
+    end
   end
 
 end
