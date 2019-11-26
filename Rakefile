@@ -5,6 +5,11 @@ RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
 
+desc "Solo las pruebas de alimento" 
+task :alimento do
+  sh "rspec ./spec/alimento_spec.rb"
+end
+
 desc "Solo las pruebas de dieta"
 task :dieta do
   sh "rspec ./spec/huella_ambiental_spec.rb"
