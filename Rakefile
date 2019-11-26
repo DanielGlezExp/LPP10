@@ -29,3 +29,8 @@ desc "solo las pruebas de plato"
 task :plato do	
   sh "rspec ./spec/plato_spec.rb"
 end
+
+desc "Solo las pruebas de plato extendido"
+task :plato_extendido do
+  sh "rspec ./spec/plato_extendido_spec.rb"
+end

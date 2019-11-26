@@ -78,7 +78,7 @@ RSpec.describe PlatoExtendido do
     end
 
     it " Puedo instanciar un objeto de la clase PlatoExtendido 1/2" do
-      expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").instance_of?(Plato)).to be(true)
+      expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").is_a?(Plato)).to be(true)
     end
 
     it "puedo instanciar un objeto de la clase PlatoExtendido 2/2" do
@@ -117,8 +117,8 @@ RSpec.describe PlatoExtendido do
       expect(@plato_extendido_carne.v_calorico.round(2)).to eq(807.3)    
     end
 
-    it " Formateo clase plato" do
-      expect(@plato_extendido_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\n")
+    it " Formateo clase plato" do 
+      expect(@plato_extendido_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\nco2: 7.8\nterreno: 331.4\n")
     end
     
   end
