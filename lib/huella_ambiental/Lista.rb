@@ -155,10 +155,11 @@ class Lista
   end
 
   #Enumerable
-  def each(&bloque)
+  def each #(&bloque)
     nodo_aux = @head
     while(nodo_aux != nil) do
-      bloque.call(nodo_aux.value)
+      yield nodo_aux.value
+      #bloque.call(nodo_aux.value)
       
       nodo_aux = nodo_aux.next
     end
@@ -173,7 +174,7 @@ class Lista
     valor = @head.value
     nodo_aux = @head.next
     while (nodo_aux != nil) do
-      valor = valor + nodo_aux.value
+       valor = valor + nodo_aux.value
       
       nodo_aux = nodo_aux.next
     end
