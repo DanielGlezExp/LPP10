@@ -2,7 +2,7 @@ require './lib/huella_ambiental'
 
 RSpec.describe Plato do
   before (:all) do
-    @hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
+    hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
     hash_carne_cordero = {nombre: "carne_cordero", proteinas: 18.0, carbohidratos: 0.0, lipidos: 17.0, co2: 20.0, terreno: 185.0, cantidad: 1.0}
     hash_camarones = {nombre: "camarones", proteinas: 17.6, carbohidratos: 1.5, lipidos: 0.6, co2: 18.0, terreno: 2.0, cantidad: 1.0}
     hash_chocolate = {nombre: "chocolate", proteinas: 5.3, carbohidratos: 47.0, lipidos: 30.0, co2: 2.3, terreno: 3.4, cantidad: 1.0}
@@ -18,9 +18,9 @@ RSpec.describe Plato do
     hash_lentejas = {nombre: "lentejas", proteinas: 23.5, carbohidratos: 52.0, lipidos: 1.4, co2: 0.4, terreno: 3.4, cantidad: 1.0}
     #hash_nuez = {nombre: "nuez", proteinas: 20.0, carbohidrados: 21.0, lipidos: 54.0, co2: 0.4, terreno: 7.9, cantidad: 1.0}
     
-    @alimento_carne_vaca = Alimento.new(@hash_carne_vaca)
-    @alimento_cordero = Alimento.new(hash_carne_cordero)
-    @alimento_camarones = Alimento.new(hash_camarones)
+    alimento_carne_vaca = Alimento.new(hash_carne_vaca)
+    alimento_cordero = Alimento.new(hash_carne_cordero)
+    alimento_camarones = Alimento.new(hash_camarones)
     alimento_chocolate = Alimento.new(hash_chocolate)
     alimento_queso = Alimento.new (hash_queso)
     alimento_cerveza = Alimento.new(hash_cerveza)
@@ -36,18 +36,16 @@ RSpec.describe Plato do
     #~~~~~~LISTAS DE DIETAS
     #ESPAÑOLA
     espanola = Lista.new
-    espanola.insert_head(@alimento_camarones)
+    espanola.insert_head(alimento_camarones)
     espanola.insert_head(alimento_chocolate)
     espanola.insert_head(alimento_cerveza)
     espanola.insert_head(alimento_queso)
-    @dieta_espanola = espanola.sum
 
     #VASCA
     vasca = Lista.new
     vasca.insert_head(alimento_chocolate)
     vasca.insert_head(alimento_lentejas)
     vasca.insert_head(alimento_huevos)
-    @dieta_vasca = vasca.sum
 
     #vegetaria
     vegetaria = Lista.new
@@ -55,43 +53,31 @@ RSpec.describe Plato do
 
     vegetaria.insert_head(alimento_huevos)
     vegetaria.insert_head(alimento_lentejas)
-    @dieta_vegetaria = vegetaria.sum
 
     #vegetaliana
     vegetaliana = Lista.new
     vegetaliana.insert_head(alimento_cafe)
     vegetaliana.insert_head(alimento_tofu)
-    @dieta_vegetaliana = vegetaliana.sum
 
     #locura por la carne
-    lista_carne = Lista.new
-    lista_carne.insert_head(@alimento_carne_vaca)
-    lista_carne.insert_head(@alimento_cordero)
-    lista_carne.insert_head(alimento_lentejas)
-    lista_carne.insert_head(alimento_huevos)
-    @dieta_carne = lista_carne.sum
-
-
-    #para enumarable
-    @lista_enteros = Lista.new
-    @lista_enteros.insert_head(4)
-    @lista_enteros.insert_head(1)
-    @lista_enteros.insert_head(2)
-    @lista_enteros.insert_head(3)
+    @lista_carne = Lista.new
+    @lista_carne.insert_head(alimento_carne_vaca)
+    @lista_carne.insert_head(alimento_cordero)
+    @lista_carne.insert_head(alimento_lentejas)
+    @lista_carne.insert_head(alimento_huevos)
 
 
   end
   
   context "Pruebas para la existencia " do
-    it "Existe la clase lista" do
+    it "Existe la clase Plato" do
       expect(Object.const_defined?('Plato')).to be true
     end
-    
-    it "puedo crear una lista" do
+
+    it "Puedo instanciar un objeto de la clase Plato" do
+      expect(Plato.new(@lista_carne).instance_of?(Plato)).to be(true)
     end
-    
-    it "Existe la cabeza de la lista" do
-    end
+
   end
 
 end
