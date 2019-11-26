@@ -1,6 +1,6 @@
 require './lib/huella_ambiental'
 
-RSpec.describe Plato do
+RSpec.describe PlatoExtendido do
   before (:all) do
     hash_carne_vaca = {nombre: "carne_vaca", proteinas: 21.1, carbohidratos: 0.0, lipidos: 3.1, co2: 50.0, terreno: 164.0, cantidad: 1.0}
     hash_carne_cordero = {nombre: "carne_cordero", proteinas: 18.0, carbohidratos: 0.0, lipidos: 17.0, co2: 20.0, terreno: 185.0, cantidad: 1.0}
@@ -67,30 +67,34 @@ RSpec.describe Plato do
 
 
    #PLATOS
-   @plato_carne = Plato.new(@lista_carne, "canibal con lentejas")
-   @plato_vegetaria = Plato.new(lista_vegetaria, "El punto medio a la matanza")
+   @plato_extendido_carne = PlatoExtendido.new(@lista_carne, "canibal con lentejas")
+   @plato_extendido_vegetaria = PlatoExtendido.new(lista_vegetaria, "El punto medio a la matanza")
 
   end
   
   context "Pruebas para la existencia " do
-    it " Existe la clase Plato" do
-      expect(Object.const_defined?('Plato')).to be true
+    it " Existe la clase Plato extendido" do
+      expect(Object.const_defined?('PlatoExtendido')).to be true
     end
 
-    it " Puedo instanciar un objeto de la clase Plato" do
-      expect(Plato.new(@lista_carne, "canibal con lentejas").instance_of?(Plato)).to be(true)
+    it " Puedo instanciar un objeto de la clase PlatoExtendido 1/2" do
+      expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").instance_of?(Plato)).to be(true)
     end
 
-    it "Existe un nombre para plato" do
-      expect(Plato.new(@lista_carne, "canibal con lentejas").nombre).to eq("canibal con lentejas")
+    it "puedo instanciar un objeto de la clase PlatoExtendido 2/2" do
+      expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").instance_of?(PlatoExtendido)).to be(true)
+    end
+
+    it "Existe un nombre para platoExtendido" do
+      expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").nombre).to eq("canibal con lentejas")
     end
 
     it " Existe conjunto de alimentos" do
-      expect(@plato_carne.respond_to?(:lista_alimentos)).to be(true)
+      expect(@plato_extendido_carne.respond_to?(:lista_alimentos)).to be(true)
     end
 
     it " Existe la cantidad de alimentos en gramos" do
-      expect(@plato_carne.respond_to?(:cantidad_alimentos_gramos)).to be(true)
+      expect(@plato_extendido_carne.respond_to?(:cantidad_alimentos_gramos)).to be(true)
     end
   end
 
@@ -98,23 +102,23 @@ RSpec.describe Plato do
   context "  Metodos de acceso a los datos " do
 
     it " Calcula bien el portentaje de proteinas" do
-      expect(@plato_carne.p_proteinas.round(2)).to eq(46.9)
+      expect(@plato_extendido_carne.p_proteinas.round(2)).to eq(46.9)
     end
 
     it " Calculo bien el porcentaje de lipidos" do
-      expect(@plato_carne.p_lipidos.round(2)).to eq(20.16)
+      expect(@plato_extendido_carne.p_lipidos.round(2)).to eq(20.16)
     end
 
     it " Calcula bien el porcentaje de glucidos" do
-      expect(@plato_carne.p_carbohidratos.round(2)).to eq(32.94)
+      expect(@plato_extendido_carne.p_carbohidratos.round(2)).to eq(32.94)
     end
 
     it " valor calorico del plato" do	
-      expect(@plato_carne.v_calorico.round(2)).to eq(807.3)    
+      expect(@plato_extendido_carne.v_calorico.round(2)).to eq(807.3)    
     end
 
     it " Formateo clase plato" do
-      expect(@plato_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\n")
+      expect(@plato_extendido_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\n")
     end
     
   end
