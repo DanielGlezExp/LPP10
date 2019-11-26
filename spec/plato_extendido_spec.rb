@@ -74,6 +74,15 @@ RSpec.describe PlatoExtendido do
    @plato_extendido_vegetaria = PlatoExtendido.new(lista_vegetaria, "El punto medio a la matanza")
    @plato_carne = Plato.new(@lista_carne, "canibal con lentejas sin preocupaciones")
 
+
+   #Lista de platos
+   @lista_platos = Lista.new
+   @lista_platos.insert_head @plato_vasco
+   @lista_platos.insert_head @plato_extendido_carne
+   @lista_platos.insert_head @plato_extendido_vegetaria
+   @lista_platos.insert_head @plato_espanol
+   @lista_platos.insert_head @plato_vegetaliana
+
   end
   
   context "Pruebas para la existencia " do
@@ -171,6 +180,31 @@ RSpec.describe PlatoExtendido do
       expect(@plato_extendido_carne > @plato_extendido_vegetaria).to be(true)
     end
 
+  end
+
+  context " Listas de platos" do
+    it " collect" do
+      r = @lista_platos.collect { |x| x}
+      expect(r).to eq([@plato_vegetaliana, @plato_espanol, @plato_extendido_vegetaria, @plato_extendido_carne, @plato_vasco])
+    end
+
+    it " select" do
+      r = @lista_platos.select { |x| x > @plato_extendido_carne }
+      expect(r).to eq([@plato_espanol, @plato_vasco])
+    end
+
+    it " max" do
+      expect(@lista_platos.max).to eq(@plato_espanol)
+    end
+
+    it " min" do
+      expect(@lista_platos.min).to eq(@plato_vegetaliana)
+    end
+
+    it " sort" do
+      r = @lista_platos.sort
+      expect(r).to eq([@plato_vegetaliana, @plato_extendido_vegetaria, @plato_extendido_carne, @plato_vasco, @plato_espanol])
+    end
 
   end
 
