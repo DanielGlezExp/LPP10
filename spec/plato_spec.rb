@@ -116,7 +116,7 @@ RSpec.describe Plato do
     end
 
     it " Formateo clase plato" do
-      expect(@plato_carne.to_s).to eq("Nobmre: El punto medio a la mamtanza \nchocolate: 1000g\nlentajas: 1000g\n huevos: 1000g\n")
+      expect(@plato_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\n")
     end
     
   end

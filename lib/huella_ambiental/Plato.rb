@@ -11,7 +11,13 @@ class Plato
     inicializar_valores
   end
 
-
+  def to_s
+    resultado = "Nombre: #{@nombre}\n"
+    @cantidad_alimentos_gramos.each { |x|
+      resultado += "#{x[:nombre]}: #{x[:cantidad]}g\n"
+    }
+    return resultado
+  end
 
   #~~~~~~~~~~~~~~~~~METODOS PRIVADOS
   private
