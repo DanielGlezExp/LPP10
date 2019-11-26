@@ -1,10 +1,12 @@
 
 
 class Plato
-  attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas, :p_lipidos, :p_carbohidratos, :v_calorico
+  attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas, :p_lipidos, :p_carbohidratos, :v_calorico, :nombre
 
-  def initialize(lista_alimentos)
-    raise TypeError, "El parametro de entrada deben ser instancias de la clase lista" unless lista_alimentos.instance_of?(Lista)
+  def initialize(lista_alimentos, nombre)
+    raise TypeError, "El primer parametro de entrada deben ser instancias de la clase lista" unless lista_alimentos.instance_of?(Lista)
+    raise TypeError, "El segundo parametro de entrada debe ser un string" unless nombre.instance_of?(String)
+    @nombre = nombre
     @lista_alimentos = lista_alimentos
     inicializar_valores
   end

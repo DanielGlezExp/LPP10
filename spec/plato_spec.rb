@@ -79,7 +79,7 @@ RSpec.describe Plato do
     end
 
     it " Puedo instanciar un objeto de la clase Plato" do
-      expect(Plato.new(@lista_carne).instance_of?(Plato)).to be(true)
+      expect(Plato.new(@lista_carne, "canibal con lentejas").instance_of?(Plato)).to be(true)
     end
 
     it "Existe un nombre para plato" do
