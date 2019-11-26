@@ -64,12 +64,20 @@ RSpec.describe Lista do
     @dieta_vegetaliana = vegetaliana.sum
 
     #locura por la carne
-    carne = Lista.new
-    carne.insert_head(@alimento_carne_vaca)
-    carne.insert_head(@alimento_cordero)
-    carne.insert_head(alimento_lentejas)
-    carne.insert_head(alimento_huevos)
-    @dieta_carne = carne.sum
+    lista_carne = Lista.new
+    lista_carne.insert_head(@alimento_carne_vaca)
+    lista_carne.insert_head(@alimento_cordero)
+    lista_carne.insert_head(alimento_lentejas)
+    lista_carne.insert_head(alimento_huevos)
+    @dieta_carne = lista_carne.sum
+
+
+    #para enumarable
+    @lista_enteros = Lista.new
+    @lista_enteros.insert_head(4)
+    @lista_enteros.insert_head(1)
+    @lista_enteros.insert_head(2)
+    @lista_enteros.insert_head(3)
 
 
   end
@@ -246,6 +254,35 @@ RSpec.describe Lista do
     it " locura carne" do
       expect(@dieta_carne.terreno.round(2)).to eq(516.4)
     end
+  end
+
+
+  #------------------------------PRACTICA 8 ------------------------
+  context "prueba enummerable " do
+    it " collect" do
+      r = @lista_enteros.collect { |x| x + 1 }
+      expect(r).to be([4, 3, 2, 5])
+    end
+
+    it " select" do
+      r = @lista_enteros.select { |x| x>=2 }
+      expect(r).to be([3, 2, 4])
+    end
+
+    it " max" do
+      expect(@lista_enteros.max).to be(4)
+    end
+
+    it " min" do
+      expect(@lista_enteros.min).to be(1)
+    end
+
+    it " sort" do
+      @lista_enteros.sort
+      r = @lista_enteros.collect { |x| x}
+      expect(r).to be([1, 2, 3, 4])
+    end
+    
   end
 
 end

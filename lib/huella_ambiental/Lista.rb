@@ -1,4 +1,5 @@
 class Lista
+  include Enumerable
   attr_reader :head, :tail, :size
 
   def initialize
@@ -153,6 +154,15 @@ class Lista
     return false
   end
 
+  #Enumerable
+  def each(&bloque)
+    nodo_aux = @head
+    while(nodo_aux != nil) do
+      block.call(nodo_aux.data)
+      
+      nodo_aux = nodo_aux.next
+    end
+  end
 
   #OTROS METODOS
   def sum
