@@ -1,4 +1,5 @@
 class Alimento
+  include Comparable
   attr_reader :nombre, :proteinas, :carbohidratos, :lipidos, :co2, :terreno, :cantidad
 
   def initialize (*args)
@@ -28,6 +29,17 @@ class Alimento
 
   def * (numero)
     return Alimento.new(nombre, proteinas * numero, carbohidratos * numero, lipidos * numero, co2 * numero, terreno * numero, cantidad * numero)
+  end
+
+  def <=> (other)
+    raise TypeError, "Se espera coo argumento un alimento" unless other.is_a?(Alimento)
+    #if (valor_energetico == other.valor_energetico) then
+     # if (@terreno == other.terreno) then
+      #  return @co2 <=> other.co2
+      #end
+      #return @terreno <=> other.terreno
+    #end
+    valor_energetico <=> other.valor_energetico
   end
 
   #MÉTODOS PRIVADOS

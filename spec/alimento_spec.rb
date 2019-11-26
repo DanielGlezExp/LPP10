@@ -161,11 +161,11 @@ RSpec.describe Alimento do
     end
 
     it " MayorIgual" do
-      expect(@alimento_nuez >= @alimento_carne_vaca).to be(false)
+      expect(@alimento_nuez >= @alimento_carne_vaca).to be(true)
     end
 
     it " MayorQue" do
-      expect(@alimento_nuez > @alimento_carne_vaca).to be(false)
+      expect(@alimento_nuez > @alimento_carne_vaca).to be(true)
     end
     
     it " MenorQue" do
