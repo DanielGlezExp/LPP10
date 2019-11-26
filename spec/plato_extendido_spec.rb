@@ -77,12 +77,16 @@ RSpec.describe PlatoExtendido do
       expect(Object.const_defined?('PlatoExtendido')).to be true
     end
 
-    it " Puedo instanciar un objeto de la clase PlatoExtendido 1/2" do
+    it " Puedo instanciar un objeto de la clase PlatoExtendido 1/3" do
       expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").is_a?(Plato)).to be(true)
     end
 
-    it "puedo instanciar un objeto de la clase PlatoExtendido 2/2" do
+    it "puedo instanciar un objeto de la clase PlatoExtendido 2/3" do
       expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").instance_of?(PlatoExtendido)).to be(true)
+    end
+
+    it "Puedo instanciar un objeto de la clase PlatoExtendido 3/3" do
+      expect(PlatoExtendido.new(@lista_carne, "canibal con lentejas").class).to be(PlatoExtendido)
     end
 
     it "Existe un nombre para platoExtendido" do
