@@ -92,5 +92,12 @@ RSpec.describe Plato do
   end
 
 
+  context "  Metodos de acceso a los datos " do
+    it " Calcula bien el portentaje de proteinas" do
+      expect(@plato_carne.proteinas).to eq(64.0)
+    end
+  end
+
+
 end
 
