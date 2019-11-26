@@ -97,6 +97,10 @@ RSpec.describe Plato do
       expect(@plato_carne.p_proteinas.round(2)).to eq(1.89)
     end
 
+    it " Calculo bien el porcentaje de lipidos" do
+      expect(@plato_carne.p_lipidos.round(2)).to eq(34)
+    end
+
     
   end
 
