@@ -24,3 +24,8 @@ desc "Solo las pruebas de Lista"
 task :lista do
   sh "rspec ./spec/lista_spec.rb"
 end
+
+desc "solo las pruebas de plato"
+task :plato do	
+  sh "rspec ./spec/plato_spec.rb"
+end
