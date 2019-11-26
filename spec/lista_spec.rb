@@ -232,19 +232,19 @@ RSpec.describe Lista do
     end
     
     it " vasca" do
-	    expect(@dieta_vasca.terreno.round(2)).to eq(170.8)
+      expect(@dieta_vasca.terreno.round(2)).to eq(170.8)
     end
 
     it " vegetaria" do
-	    expect(@dieta_vegetaria.terreno.round(2)).to eq(331.4)
+      expect(@dieta_vegetaria.terreno.round(2)).to eq(331.4)
     end
 
     it " vegetaliana" do
-	    expect(@dieta_vegetaliana.terreno.round(2)).to eq(166.2)
+      expect(@dieta_vegetaliana.terreno.round(2)).to eq(166.2)
     end
 
     it " locura carne" do
-	    expect(@dieta_carne.terreno.round(2)).to eq(516.4)
+      expect(@dieta_carne.terreno.round(2)).to eq(516.4)
     end
   end
 

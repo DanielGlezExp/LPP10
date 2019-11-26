@@ -82,6 +82,7 @@ class Lista
         @tail = nil
       else
         @head.next.prev = nil
+
       end
 
       aux = @head

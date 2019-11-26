@@ -149,5 +149,27 @@ RSpec.describe Alimento do
       expect((@alimento_nuez * 0.5).proteinas.round(1)).to eq(10.0)
     end 
   end
+
+  context "Puedo comparar alimentos" do
+    it " Iguales?" do
+      expect(@alimento_nuez == @alimento_carne_vaca).to be(false)
+    end
+
+    it " MenorIgual?" do
+      expect(@alimento_nuez <= @alimento_carne_vaca).to be(false)
+    end
+
+    it " MayorIgual" do
+      expect(@alimento_nuez >= @alimento_carne_vaca).to be(false)
+    end
+
+    it " MayorQue" do
+      expect(@alimento_nuez > @alimento_carne_vaca).to be(false)
+    end
+    
+    it " MenorQue" do
+      #expect(@alimento_nuez < @alimento_carne_vaca).to be(false)
+    end
+  end
 end
 
