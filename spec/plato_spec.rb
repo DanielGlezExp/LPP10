@@ -94,15 +94,15 @@ RSpec.describe Plato do
 
   context "  Metodos de acceso a los datos " do
     it " Calcula bien el portentaje de proteinas" do
-      expect(@plato_carne.p_proteinas.round(2)).to eq(1.89)
+	    expect(@plato_carne.p_proteinas.round(2)).to eq(46.9)
     end
 
     it " Calculo bien el porcentaje de lipidos" do
-      expect(@plato_carne.p_lipidos.round(2)).to eq(0.81)
+	    expect(@plato_carne.p_lipidos.round(2)).to eq(20.16)
     end
 
     it " Calcula bien el porcentaje de glucidos" do
-      expect(@plato_carne.p_glucidos.round(2).to eq(98)
+	    expect(@plato_carne.p_carbohidratos.round(2)).to eq(32.94)
     end
 
     
