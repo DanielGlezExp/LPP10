@@ -9,11 +9,11 @@ RSpec.describe PlatoExtendido do
     #hash_salmon = {nombre: "salmon", proteinas: 19.9, carbohidratos: 0.0, lipidos: 13.6, co2: 6.0, terreno: 3.7, cantidad: 1.0}
     #hash_cerdo = {nombre: "cerdo", proteinas: 21.5, carbohidratos: 0.0, lipidos: 6.3, co2: 7.6, terreno: 11.0, cantidad: 1.0}
     #hash_pollo = {nombre: "pollo", proteinas: 20.6, carbohidratos: 0.0, lipidos: 5.6, co2: 5.7, terreno: 164.0, cantidad: 1.0}
-    hash_queso = {nombre: "queso", proteinas: 25.0, carbohidratos: 1.3, lipidos: 33.0, co2: 11.0, terreno: 164.0, cantidad: 1.0}
-    hash_cerveza = {nombre: "cerveza", proteinas: 0.5, carbohidratos: 3.6, lipidos: 0.0, co2: 0.24, terreno: 164.0, cantidad: 1.0}
-    hash_leche_vaca = {nombre: "leche_vaca", proteinas: 3.3, carbohidratos: 4.8, lipidos: 3.2, co2: 3.2, terreno: 164.0, cantidad: 1.0}
-    hash_huevos = {nombre: "huevos", proteinas: 13.0, carbohidratos: 1.1, lipidos: 11.0, co2: 4.2, terreno: 164.0, cantidad: 1.0}
-    hash_cafe = {nombre: "cafe", proteinas: 0.1, carbohidratos: 0.0, lipidos: 0.0, co2: 0.4, terreno: 164.0, cantidad: 1.0}
+    hash_queso = {nombre: "queso", proteinas: 25.0, carbohidratos: 1.3, lipidos: 33.0, co2: 11.0, terreno: 41.0, cantidad: 1.0}
+    hash_cerveza = {nombre: "cerveza", proteinas: 0.5, carbohidratos: 3.6, lipidos: 0.0, co2: 0.24, terreno: 0.22, cantidad: 1.0}
+    hash_leche_vaca = {nombre: "leche_vaca", proteinas: 3.3, carbohidratos: 4.8, lipidos: 3.2, co2: 3.2, terreno: 8.9, cantidad: 1.0}
+    hash_huevos = {nombre: "huevos", proteinas: 13.0, carbohidratos: 1.1, lipidos: 11.0, co2: 4.2, terreno: 5.7, cantidad: 1.0}
+    hash_cafe = {nombre: "cafe", proteinas: 0.1, carbohidratos: 0.0, lipidos: 0.0, co2: 0.4, terreno: 0.4, cantidad: 1.0}
     hash_tofu = {nombre: "tofu", proteinas: 8.0, carbohidratos: 1.9, lipidos: 4.8, co2: 2.0, terreno: 2.2, cantidad: 1.0}
     hash_lentejas = {nombre: "lentejas", proteinas: 23.5, carbohidratos: 52.0, lipidos: 1.4, co2: 0.4, terreno: 3.4, cantidad: 1.0}
     #hash_nuez = {nombre: "nuez", proteinas: 20.0, carbohidrados: 21.0, lipidos: 54.0, co2: 0.4, terreno: 7.9, cantidad: 1.0}
@@ -117,8 +117,19 @@ RSpec.describe PlatoExtendido do
       expect(@plato_extendido_carne.v_calorico.round(2)).to eq(807.3)    
     end
 
+    it " valor de co2" do
+      expect(@plato_extendido_vegetaria.co2.round(2)).to eq(7.8)
+    end
+
+    it " valor terreno" do
+      expect(@plato_extendido_vegetaria.terreno.round(2)).to eq(18.0)
+    end
+  end
+
+  
+  context " Formateo de la clase" do
     it " Formateo clase plato" do 
-      expect(@plato_extendido_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\nco2: 7.8\nterreno: 331.4\n")
+      expect(@plato_extendido_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\nco2: 7.8\nterreno: 18.0\n")
     end
     
   end
