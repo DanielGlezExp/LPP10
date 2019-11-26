@@ -35,29 +35,29 @@ RSpec.describe Plato do
 
     #~~~~~~LISTAS DE DIETAS
     #ESPAÑOLA
-    espanola = Lista.new
-    espanola.insert_head(alimento_camarones)
-    espanola.insert_head(alimento_chocolate)
-    espanola.insert_head(alimento_cerveza)
-    espanola.insert_head(alimento_queso)
+    @lista_espanola = Lista.new
+    @lista_espanola.insert_head(alimento_camarones)
+    @lista_espanola.insert_head(alimento_chocolate)
+    @lista_espanola.insert_head(alimento_cerveza)
+    @lista_espanola.insert_head(alimento_queso)
 
     #VASCA
-    vasca = Lista.new
-    vasca.insert_head(alimento_chocolate)
-    vasca.insert_head(alimento_lentejas)
-    vasca.insert_head(alimento_huevos)
+    @lista_vasca = Lista.new
+    @lista_vasca.insert_head(alimento_chocolate)
+    @lista_vasca.insert_head(alimento_lentejas)
+    @lista_vasca.insert_head(alimento_huevos)
 
     #vegetaria
-    vegetaria = Lista.new
-    vegetaria.insert_head(alimento_leche)
+    @lista_vegetaria = Lista.new
+    @lista_vegetaria.insert_head(alimento_leche)
 
-    vegetaria.insert_head(alimento_huevos)
-    vegetaria.insert_head(alimento_lentejas)
+    @lista_vegetaria.insert_head(alimento_huevos)
+    @lista_vegetaria.insert_head(alimento_lentejas)
 
     #vegetaliana
-    vegetaliana = Lista.new
-    vegetaliana.insert_head(alimento_cafe)
-    vegetaliana.insert_head(alimento_tofu)
+    @lista_vegetaliana = Lista.new
+    @lista_vegetaliana.insert_head(alimento_cafe)
+    @lista_vegetaliana.insert_head(alimento_tofu)
 
     #locura por la carne
     @lista_carne = Lista.new
@@ -70,6 +70,7 @@ RSpec.describe Plato do
 
    #PLATOS
    @plato_carne = Plato.new(@lista_carne, "canibal con lentejas")
+   @plato_vegetaria = Plato.new(@lista_vegetaria, "El punto medio a la matanza")
 
   end
   
@@ -97,6 +98,7 @@ RSpec.describe Plato do
 
 
   context "  Metodos de acceso a los datos " do
+
     it " Calcula bien el portentaje de proteinas" do
       expect(@plato_carne.p_proteinas.round(2)).to eq(46.9)
     end
@@ -111,6 +113,10 @@ RSpec.describe Plato do
 
     it " valor calorico del plato" do	
       expect(@plato_carne.v_calorico.round(2)).to eq(807.3)    
+    end
+
+    it " Formateo clase plato" do
+      expect(@plato_carne.to_s).to eq("Nobmre: El punto medio a la mamtanza \nchocolate: 1000g\nlentajas: 1000g\n huevos: 1000g\n")
     end
     
   end
