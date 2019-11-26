@@ -261,26 +261,25 @@ RSpec.describe Lista do
   context "prueba enummerable " do
     it " collect" do
       r = @lista_enteros.collect { |x| x + 1 }
-      expect(r).to be([4, 3, 2, 5])
+      expect(r).to eq([4, 3, 2, 5])
     end
 
     it " select" do
       r = @lista_enteros.select { |x| x>=2 }
-      expect(r).to be([3, 2, 4])
+      expect(r).to eq([3, 2, 4])
     end
 
     it " max" do
-      expect(@lista_enteros.max).to be(4)
+      expect(@lista_enteros.max).to eq(4)
     end
 
     it " min" do
-      expect(@lista_enteros.min).to be(1)
+      expect(@lista_enteros.min).to eq(1)
     end
 
     it " sort" do
-      @lista_enteros.sort
-      r = @lista_enteros.collect { |x| x}
-      expect(r).to be([1, 2, 3, 4])
+      r = @lista_enteros.sort
+      expect(r).to eq([1, 2, 3, 4])
     end
     
   end

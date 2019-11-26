@@ -158,7 +158,7 @@ class Lista
   def each(&bloque)
     nodo_aux = @head
     while(nodo_aux != nil) do
-      block.call(nodo_aux.data)
+      bloque.call(nodo_aux.value)
       
       nodo_aux = nodo_aux.next
     end
