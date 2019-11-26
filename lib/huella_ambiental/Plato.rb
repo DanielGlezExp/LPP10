@@ -1,7 +1,7 @@
 
 
 class Plato
-  attr_reader :lista_alimentos, :cantidad_alimentos_gramos
+  attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas
 
   def initialize(lista_alimentos)
     raise TypeError, "El parametro de entrada deben ser instancias de la clase lista" unless lista_alimentos.instance_of?(Lista)
@@ -15,9 +15,18 @@ class Plato
   private
   def inicializar_valores
     @cantidad_alimentos_gramos = []
+    masa_total = 0.0
+    proteinas_totales = 0.0
+
     @lista_alimentos.each { |alimento|
+
       raise TypeError, "Todos los elementos de la lista deben ser instancias de Alimento" unless alimento.instance_of?(Alimento)
       @cantidad_alimentos_gramos << {nombre: alimento.nombre, cantidad: alimento.cantidad * 1000 }
+      masa_total += alimento.cantidad * 1000
+      proteinas_totales += alimento.proteinas
+
     }
+
+    @p_proteinas = proteinas_totales / masa_total * 100.0
   end
 end
