@@ -16,7 +16,7 @@ class Plato
   def to_s
     resultado = "Nombre: #{@nombre}\n"
     @cantidad_alimentos_gramos.each { |x|
-      resultado += "#{x[:nombre]}: #{x[:cantidad]}g\n"
+      resultado += "#{x[:nombre]}: #{x[:cantidad].round(2)}g\n"
     }
     return resultado
   end

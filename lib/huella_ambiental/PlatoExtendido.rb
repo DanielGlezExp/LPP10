@@ -9,10 +9,11 @@ class PlatoExtendido < Plato
 
   #invalidamos el to_s superior
   def to_s
-    resultado = "Nombre: #{@nombre}\n"
-    @cantidad_alimentos_gramos.each { |x|
-      resultado += "#{x[:nombre]}: #{x[:cantidad].round(2)}g\n"
-    }
+    #resultado = "Nombre: #{@nombre}\n"
+    #@cantidad_alimentos_gramos.each { |x|
+    #  resultado += "#{x[:nombre]}: #{x[:cantidad].round(2)}g\n"
+    #}
+    resultado = super.to_s
     resultado += "co2: #{@co2.round(2)}\nterreno: #{@terreno.round(2)}\n"
     return resultado
   end
