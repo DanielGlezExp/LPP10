@@ -45,6 +45,7 @@ class Alimento
     valor_energetico <=> other.valor_energetico
   end
 
+
   #MÉTODOS PRIVADOS
   private
 
