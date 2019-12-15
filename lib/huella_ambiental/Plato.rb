@@ -79,5 +79,7 @@ class Plato
       valor2 = 3
     end
 
+    @huella_nutricional = (valor1 + valor2)/2.0
+
   end
 end 

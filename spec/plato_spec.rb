@@ -72,7 +72,7 @@ RSpec.describe Plato do
    
    #--------Practica 9
    @menu_dietetico = [@plato_vegetaria, Plato.new(lista_vasca, "vasca"), @plato_carne]
-   @precios = [10.0, 10.0, 30.0]
+   @precios = [10.0, 20.0, 30.0]
 
   end
   
@@ -158,8 +158,19 @@ RSpec.describe Plato do
   #------------------------PRACTICA9
   context "practica9 menu dietetico" do
     it "obtiene el plato con máxima huella nutricional del menu" do
-      expect(@menu_dietetico.max.nombre).to eq("El punto medio a la matanza")
-    end   
+      expect(@menu_dietetico.max.nombre).to eq("canibal con lentejas")
+    end
+
+    it "el plato maximo tiene la huella nutricional esperada" do 
+      expect(@menu_dietetico.max.huella_nutricional).to eq(1.5)
+    end
+
+    it "Modifica correctamete los precios en funcion a la huella nutricional" do
+      plato_max = @menu_dietetico.max
+      factor_incremento = plato_max.huella_nutricional - 1.0
+      nuevos_precios = @precios.collect { |precio| precio + precio * factor_incremento }
+      expect(nuevos_precios).to eq([15, 30, 45])
+    end
   end
 
 end
