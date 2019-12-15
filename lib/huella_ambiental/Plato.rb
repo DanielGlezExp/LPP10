@@ -60,4 +60,4 @@ class Plato
     @p_lipidos = lipidos_totales / masa_total * 100.0
     @p_carbohidratos = carbohidratos_totales / masa_total * 100.0
   end
-end
+end 
