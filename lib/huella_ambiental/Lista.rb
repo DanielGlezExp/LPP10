@@ -1,7 +1,10 @@
+#Clase que representa una lista doblemente enlazada
 class Lista
   include Enumerable
   attr_reader :head, :tail, :size
 
+  #Inicializa un objeto de la clase lista
+  #la lista empieza vacía
   def initialize
     @head, @tail, @size = nil, nil, 0
   end
@@ -9,6 +12,7 @@ class Lista
 
   ##-------------------MÉTODOS PARA INSERTAR~~~~~~~~~~~~~~~~~~~~~~
 
+  #Inserta un nuevo valor a la lista por la cabeza
   def insert_head valor
     nodo_aux = Nodo.new
     nodo_aux.value = valor
@@ -25,7 +29,7 @@ class Lista
 
   end
 
-
+  #Metodo para insertar un nuevo valor a un objeto del tipo lista por la cola
   def insert_tail valor
     nodo_aux = Nodo.new
     nodo_aux.value = valor
@@ -42,7 +46,7 @@ class Lista
 
   end
 
-
+  #Dado un nodo de la lista, inserta un nuevo valor a la lista después de dicho nodo
   def insert_next (nodo, valor)
     raise TypeError, "el parametro nodo en insert de lista no es del tipo nodo" unless nodo.is_a?(Nodo)
     
@@ -77,6 +81,8 @@ class Lista
   end
 
   #~~~~~~~~~~~~~~MÉTODOS PARA ELIMINAR~~~~~~~~~~~~~~~
+  
+  #Elimina el valor en la cabeza de la lista
   def pop_head
     if (size != 0) then
       if (@head.next == nil) then
@@ -97,7 +103,7 @@ class Lista
     return false
   end
 
-
+  #Elimina el valor en la cola de la lista
   def pop_tail
     if (size != 0) then
       if (@tail.prev == nil) then
@@ -118,6 +124,7 @@ class Lista
   end
 
 
+  #Dado un nodo, elimina dicho nodo de la lista
   def pop nodo
     raise TypeError, "En el metodo pop de lista, el argumento pasado no es un nodo" unless nodo.is_a?(Nodo)
     
@@ -155,6 +162,9 @@ class Lista
   end
 
   #Enumerable
+  
+  #Metodo each que sirve para enumerar los valores de la lista
+  #Para ello usa el módulo enumerable
   def each #(&bloque)
     nodo_aux = @head
     while(nodo_aux != nil) do
@@ -166,6 +176,8 @@ class Lista
   end
 
   #OTROS METODOS
+  
+  #Devuelva la suma de los valores de la lista
   def sum
     if (size == 0) then
       return false

@@ -1,10 +1,11 @@
 
-
+#Clae Plato representa un conjunto de alimentos
 class Plato
   include Comparable
 
   attr_reader :lista_alimentos, :cantidad_alimentos_gramos, :p_proteinas, :p_lipidos, :p_carbohidratos, :v_calorico, :huella_nutricional, :nombre
 
+  #A partir de una lista de alimentos y un nombre, crea un objeto de la clase Plato
   def initialize(lista_alimentos, nombre)
     raise TypeError, "El primer parametro de entrada deben ser instancias de la clase lista" unless lista_alimentos.instance_of?(Lista)
     raise TypeError, "El segundo parametro de entrada debe ser un string" unless nombre.instance_of?(String)
@@ -13,6 +14,7 @@ class Plato
     inicializar_valores
   end
 
+  #Metodo de formateo de la clase plato
   def to_s
     resultado = "Nombre: #{@nombre}\n"
     @cantidad_alimentos_gramos.each { |x|
@@ -21,6 +23,8 @@ class Plato
     return resultado
   end
 
+  #Metodo para comprar dos platos dado sus huellas nutricionales
+  #Este método será usado por el módulo Comparable
   def <=> (other)
     if (other.is_a?(Integer) or other.is_a?(Float)) then
       return @v_calorico <=> other
@@ -31,6 +35,8 @@ class Plato
   end
 
   #~~~~~~~~~~~~~~~~~METODOS PRIVADOS
+  
+  #Netodo auxiliar para inicializar los valres del plato
   private
   def inicializar_valores
     @cantidad_alimentos_gramos = []

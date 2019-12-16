@@ -1,0 +1,24 @@
+Sun, 15 Dec 2019 21:04:21 +0000
+./lib/huella_ambiental/Nodo.rb	Sun, 15 Dec 2019 20:58:43 +0000
+./lib/huella_ambiental/Lista.rb	Sun, 15 Dec 2019 20:57:24 +0000
+./lib/huella_ambiental/Dieta.rb	Wed, 20 Nov 2019 12:04:03 +0000
+./lib/huella_ambiental/PlatoExtendido.rb	Sun, 15 Dec 2019 21:04:15 +0000
+./lib/huella_ambiental/Alimento.rb	Sun, 15 Dec 2019 20:53:32 +0000
+./lib/huella_ambiental/Plato.rb	Sun, 15 Dec 2019 21:02:40 +0000
+./lib/huella_ambiental/version.rb	Mon, 11 Nov 2019 17:24:51 +0000
+./lib/huella_ambiental.rb	Tue, 26 Nov 2019 21:51:31 +0000
+./huella_ambiental.gemspec	Tue, 19 Nov 2019 19:37:27 +0000
+./Gemfile	Mon, 11 Nov 2019 17:24:51 +0000
+./Guardfile	Wed, 20 Nov 2019 12:05:19 +0000
+./README.md	Mon, 18 Nov 2019 15:49:12 +0000
+./Gemfile.lock	Tue, 19 Nov 2019 19:37:27 +0000
+./bin/setup	Mon, 11 Nov 2019 17:24:51 +0000
+./bin/console	Mon, 11 Nov 2019 17:24:51 +0000
+./Rakefile	Tue, 26 Nov 2019 21:51:31 +0000
+./spec/spec_helper.rb	Mon, 11 Nov 2019 17:24:51 +0000
+./spec/lista_spec.rb	Tue, 26 Nov 2019 22:18:27 +0000
+./spec/huella_ambiental_spec.rb	Wed, 13 Nov 2019 11:38:48 +0000
+./spec/plato_spec.rb	Sun, 15 Dec 2019 20:38:15 +0000
+./spec/alimento_spec.rb	Tue, 26 Nov 2019 22:18:27 +0000
+./spec/plato_extendido_spec.rb	Sun, 15 Dec 2019 20:38:15 +0000
+./spec/nodo_spec.rb	Tue, 19 Nov 2019 19:37:27 +0000
