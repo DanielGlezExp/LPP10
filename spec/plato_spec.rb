@@ -30,50 +30,6 @@ RSpec.describe Plato do
    alimento_tofu = Alimento.new(hash_tofu)
    alimento_lentejas = Alimento.new(hash_lentejas)
    #alimento_nuez = Alimento.new(hash_nuez) 
-
-   #~~~~~~LISTAS DE DIETAS
-   #ESPAÑOLA
-   lista_espanola = Lista.new
-   lista_espanola.insert_head(alimento_camarones)
-   lista_espanola.insert_head(alimento_chocolate)
-   lista_espanola.insert_head(alimento_cerveza)
-   lista_espanola.insert_head(alimento_queso)
-
-   #VASCA
-   lista_vasca = Lista.new
-   lista_vasca.insert_head(alimento_chocolate)
-   lista_vasca.insert_head(alimento_lentejas)
-   lista_vasca.insert_head(alimento_huevos)
-
-   #vegetaria
-   lista_vegetaria = Lista.new
-   lista_vegetaria.insert_head(alimento_leche)
-
-   lista_vegetaria.insert_head(alimento_huevos)
-   lista_vegetaria.insert_head(alimento_lentejas)
-
-   #vegetaliana
-   lista_vegetaliana = Lista.new
-   lista_vegetaliana.insert_head(alimento_cafe)
-   lista_vegetaliana.insert_head(alimento_tofu)
-
-   #locura por la carne
-   @lista_carne = Lista.new
-   @lista_carne.insert_head(alimento_carne_vaca)
-   @lista_carne.insert_head(alimento_cordero)
-   @lista_carne.insert_head(alimento_lentejas)
-   @lista_carne.insert_head(alimento_huevos)
-
-
-   #PLATOS
-   @plato_carne = Plato.new(@lista_carne, "canibal con lentejas")
-   @plato_vegetaria = Plato.new(lista_vegetaria, "El punto medio a la matanza")
-
-   
-   #--------Practica 9
-   @menu_dietetico = [@plato_vegetaria, Plato.new(lista_vasca, "vasca"), @plato_carne]
-   @precios = [10.0, 20.0, 30.0]
-
   end
   
   context "Pruebas para la existencia " do
@@ -81,97 +37,25 @@ RSpec.describe Plato do
       expect(Object.const_defined?('Plato')).to be true
     end
 
-    it " Puedo instanciar un objeto de la clase Plato" do
-      expect(Plato.new(@lista_carne, "canibal con lentejas").instance_of?(Plato)).to be(true)
+    it "puedo crear un plato" do
+      mi_plato = Plato.new("Hamburguesa") do
+        nombre "Hamburguesa especial de la casa"
+	alimento :descripcion => "carne de vaca",
+		 :gramos => 100
+	alimento :descripcion => "huevo",
+		  :gramos => 20
+      end
+      expect(mi_plato.instance_of?(Plato)).to eq(true)
     end
 
-    it "Existe un nombre para plato" do
-      expect(Plato.new(@lista_carne, "canibal con lentejas").nombre).to eq("canibal con lentejas")
-    end
 
-    it " Existe conjunto de alimentos" do
-      expect(@plato_carne.respond_to?(:lista_alimentos)).to be(true)
-    end
-
-    it " Existe la cantidad de alimentos en gramos" do
-      expect(@plato_carne.respond_to?(:cantidad_alimentos_gramos)).to be(true)
-    end
   end
 
 
-  context "  Metodos de acceso a los datos " do
-
-    it " Calcula bien el portentaje de proteinas" do
-      expect(@plato_carne.p_proteinas.round(2)).to eq(46.9)
-    end
-
-    it " Calculo bien el porcentaje de lipidos" do
-      expect(@plato_carne.p_lipidos.round(2)).to eq(20.16)
-    end
-
-    it " Calcula bien el porcentaje de glucidos" do
-      expect(@plato_carne.p_carbohidratos.round(2)).to eq(32.94)
-    end
-
-    it " valor calorico del plato" do	
-      expect(@plato_carne.v_calorico.round(2)).to eq(807.3)    
-    end
-
-    it " Formateo clase plato" do
-      expect(@plato_vegetaria.to_s).to eq("Nombre: El punto medio a la matanza\nlentejas: 1000.0g\nhuevos: 1000.0g\nleche_vaca: 1000.0g\n")
-    end
     
-  end
-
-  context " Comparaciones" do
-    it " ==" do
-      #expect(@plato_carne == @plato_vegetaria).to be(false)
-    end
-
-    it " == con numero" do
-      #expect(@plato_carne != 375).to be(true)
-    end
-
-    it "!=" do
-    #  expect(@plato_carne != @plato_vegetaria).to be(true)
-    end
-
-    it " <=" do
-     # expect(@plato_carne <= @plato_vegetaria).to be(false)
-    end
-
-    it " <" do
-      #expect(@plato_carne < @plato_vegetaria).to be(false)
-    end
-
-    it " >=" do
-      #expect(@plato_carne >= @plato_vegetaria).to be(true)
-    end
-
-    it " >" do
-      #expect(@plato_carne > @plato_vegetaria).to be(true)
-    end
-
-  end
 
 
-  #------------------------PRACTICA9
-  context "practica9 menu dietetico" do
-    it "obtiene el plato con máxima huella nutricional del menu" do
-      expect(@menu_dietetico.max.nombre).to eq("canibal con lentejas")
-    end
 
-    it "el plato maximo tiene la huella nutricional esperada" do 
-      expect(@menu_dietetico.max.huella_nutricional).to eq(1.5)
-    end
-
-    it "Modifica correctamete los precios en funcion a la huella nutricional" do
-      plato_max = @menu_dietetico.max
-      factor_incremento = plato_max.huella_nutricional - 1.0
-      nuevos_precios = @precios.collect { |precio| precio + precio * factor_incremento }
-      expect(nuevos_precios).to eq([15, 30, 45])
-    end
-  end
 
 end
 
