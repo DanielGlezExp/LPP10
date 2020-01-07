@@ -17,6 +17,8 @@ class Plato
 	end
 
 	def to_s
+		output = "Nombre: #{@nombre} | C02: #{@co2} | Terreno: #{@terreno} | Kcal: #{@kcal}"
+		return output
 	end
 
 	def alimento(argumento)
