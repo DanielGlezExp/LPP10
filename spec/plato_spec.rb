@@ -39,11 +39,16 @@ RSpec.describe Plato do
 
     it "puedo crear un plato" do
       mi_plato = Plato.new("Hamburguesa") do
-        nombre "Hamburguesa especial de la casa"
 	alimento :descripcion => "carne de vaca",
-		 :gramos => 100
+		 :gramos => 100,
+		 :co2 => 10,
+		 :terreno => 30,
+		 :kcal => 2
 	alimento :descripcion => "huevo",
-		  :gramos => 20
+		 :gramos => 20,
+		 :co2 => 2,
+		 :terreno => 1,
+		 :kcal => 3
       end
       expect(mi_plato.instance_of?(Plato)).to eq(true)
     end

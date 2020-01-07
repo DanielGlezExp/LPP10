@@ -1,6 +1,6 @@
 class Plato
 
-	attr_reader :alimentos, :nombre
+	attr_reader :alimentos, :nombre, :alimentos, :co2, :terreno, :kcal
 
 	def initialize(nombre, &block)
 		@nombre = nombre
@@ -13,20 +13,32 @@ class Plato
 				instance_eval(&block)
 			end
 		end
+		inicializar_valores
 	end
 
 	def to_s
 	end
 
 	def alimento(argumento)
-		if argumento[:descripcion] and argumento[:gramos] 
-			mi_hash = { descripcion: "#{argumento[:descripcion]}", gramos: "#{argumento[:gramos]}" }
-			alimentos << mi_hash
+		if argumento[:descripcion] and argumento[:co2] and argumento[:terreno] and argumento[:kcal]
+			mi_hash = { descripcion: "#{argumento[:descripcion]}", co2: argumento[:co2], terreno: argumento[:terreno], kcal: argumento[:kcal]  }
+			@alimentos << mi_hash
 	        end
 	end
+
 		
 	
 
 
-  #~~~~~~~~~~~~~~~~~METODOS PRIVADOS
+  #~~~~~~~~~~~~~~~~~METODOS PRIVADO
+	def inicializar_valores
+		@co2 = 0.0
+		@terreno = 0.0
+		@kcal = 0.0
+		@alimentos.each do |alimento|
+			@kcal += alimento[:kcal]
+			@terreno += alimento[:terreno]
+			@co2 += alimento[:co2]		
+		end
+	end
 end 
