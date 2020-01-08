@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    huella_ambiental (0.1.0)
+    huellaAmbiental (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -100,7 +100,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-rspec
-  huella_ambiental!
+  huellaAmbiental!
   rake (~> 10.0)
   rspec (~> 3.0)
 

@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "huella_ambiental/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "huella_ambiental"
+  spec.name          = "huellaAmbiental"
   spec.version       = HuellaAmbiental::VERSION
   spec.authors       = ["DanielGlezExp"]
   spec.email         = ["daniel.280596@gmail.com"]
