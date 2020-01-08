@@ -150,6 +150,7 @@ RSpec.describe Alimento do
     end 
   end
 
+
   context "Puedo comparar alimentos" do
     it " ==" do
       nuez2 = Alimento.new(@hash_nuez)
